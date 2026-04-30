@@ -1,0 +1,6 @@
+Database/portal.db 
+Database/portal.db 
+Database/portal.db 
+*.db 
+__pycache__/ 
+venv/ 

@@ -1,0 +1,619 @@
+2026-04-04 09:45:57,353 [INFO] Rebuild from 2026-03 — fetching any missing parquets first
+2026-04-04 09:47:45,125 [INFO] Already up to date — no missing dates found
+2026-04-04 09:47:45,146 [INFO] Building summaries: (2026, 3) -> (2026, 3) (1 months)
+2026-04-04 09:47:45,556 [INFO]   2026-03: 31 files, 31 days in month
+2026-04-04 10:11:53,342 [INFO]     daily_hpc:    380,669 rows
+2026-04-04 10:11:55,837 [INFO]     monthly_hpc:  6,803 rows
+2026-04-04 10:23:23,727 [INFO]     monthly_farmer: 96,050 rows
+2026-04-04 10:50:11,232 [INFO]     quality_incidents: 1,451,760 rows
+2026-04-04 10:50:11,387 [INFO] All summaries built successfully.
+2026-04-04 11:36:00,566 [INFO]   proc_quality_incidents: deleted 2,961,408 rows (before 2025-04-04)
+2026-04-04 12:08:57,438 [INFO]   Deleted old parquet: proc_2025-01-03.parquet
+2026-04-04 12:08:57,445 [INFO]   Deleted old parquet: proc_2025-01-04.parquet
+2026-04-04 12:08:57,446 [INFO]   Deleted old parquet: proc_2025-01-05.parquet
+2026-04-04 12:08:57,447 [INFO]   Deleted old parquet: proc_2025-01-06.parquet
+2026-04-04 12:08:57,448 [INFO]   Deleted old parquet: proc_2025-01-07.parquet
+2026-04-04 12:08:57,448 [INFO]   Deleted old parquet: proc_2025-01-08.parquet
+2026-04-04 12:08:57,449 [INFO]   Deleted old parquet: proc_2025-01-09.parquet
+2026-04-04 12:08:57,451 [INFO]   Deleted old parquet: proc_2025-01-10.parquet
+2026-04-04 12:08:57,452 [INFO]   Deleted old parquet: proc_2025-01-11.parquet
+2026-04-04 12:08:57,477 [INFO]   Deleted old parquet: proc_2025-01-12.parquet
+2026-04-04 12:08:57,479 [INFO]   Deleted old parquet: proc_2025-01-13.parquet
+2026-04-04 12:08:57,481 [INFO]   Deleted old parquet: proc_2025-01-14.parquet
+2026-04-04 12:08:57,482 [INFO]   Deleted old parquet: proc_2025-01-15.parquet
+2026-04-04 12:08:57,483 [INFO]   Deleted old parquet: proc_2025-01-16.parquet
+2026-04-04 12:08:57,484 [INFO]   Deleted old parquet: proc_2025-01-17.parquet
+2026-04-04 12:08:57,510 [INFO]   Deleted old parquet: proc_2025-01-18.parquet
+2026-04-04 12:08:57,514 [INFO]   Deleted old parquet: proc_2025-01-19.parquet
+2026-04-04 12:08:57,515 [INFO]   Deleted old parquet: proc_2025-01-20.parquet
+2026-04-04 12:08:57,517 [INFO]   Deleted old parquet: proc_2025-01-21.parquet
+2026-04-04 12:08:57,518 [INFO]   Deleted old parquet: proc_2025-01-22.parquet
+2026-04-04 12:08:57,519 [INFO]   Deleted old parquet: proc_2025-01-23.parquet
+2026-04-04 12:08:57,521 [INFO]   Deleted old parquet: proc_2025-01-24.parquet
+2026-04-04 12:08:57,522 [INFO]   Deleted old parquet: proc_2025-01-25.parquet
+2026-04-04 12:08:57,523 [INFO]   Deleted old parquet: proc_2025-01-26.parquet
+2026-04-04 12:08:57,524 [INFO]   Deleted old parquet: proc_2025-01-27.parquet
+2026-04-04 12:08:57,525 [INFO]   Deleted old parquet: proc_2025-01-28.parquet
+2026-04-04 12:08:57,525 [INFO]   Deleted old parquet: proc_2025-01-29.parquet
+2026-04-04 12:08:57,527 [INFO]   Deleted old parquet: proc_2025-01-30.parquet
+2026-04-04 12:08:57,528 [INFO]   Deleted old parquet: proc_2025-01-31.parquet
+2026-04-04 12:08:57,529 [INFO]   Deleted old parquet: proc_2025-02-01.parquet
+2026-04-04 12:08:57,529 [INFO]   Deleted old parquet: proc_2025-02-02.parquet
+2026-04-04 12:08:57,531 [INFO]   Deleted old parquet: proc_2025-02-03.parquet
+2026-04-04 12:08:57,531 [INFO]   Deleted old parquet: proc_2025-02-04.parquet
+2026-04-04 12:08:57,532 [INFO]   Deleted old parquet: proc_2025-02-05.parquet
+2026-04-04 12:08:57,533 [INFO]   Deleted old parquet: proc_2025-02-06.parquet
+2026-04-04 12:08:57,533 [INFO]   Deleted old parquet: proc_2025-02-07.parquet
+2026-04-04 12:08:57,534 [INFO]   Deleted old parquet: proc_2025-02-08.parquet
+2026-04-04 12:08:57,537 [INFO]   Deleted old parquet: proc_2025-02-09.parquet
+2026-04-04 12:08:57,539 [INFO]   Deleted old parquet: proc_2025-02-10.parquet
+2026-04-04 12:08:57,540 [INFO]   Deleted old parquet: proc_2025-02-11.parquet
+2026-04-04 12:08:57,542 [INFO]   Deleted old parquet: proc_2025-02-12.parquet
+2026-04-04 12:08:57,543 [INFO]   Deleted old parquet: proc_2025-02-13.parquet
+2026-04-04 12:08:57,543 [INFO]   Deleted old parquet: proc_2025-02-14.parquet
+2026-04-04 12:08:57,544 [INFO]   Deleted old parquet: proc_2025-02-15.parquet
+2026-04-04 12:08:57,545 [INFO]   Deleted old parquet: proc_2025-02-16.parquet
+2026-04-04 12:08:57,545 [INFO]   Deleted old parquet: proc_2025-02-17.parquet
+2026-04-04 12:08:57,546 [INFO]   Deleted old parquet: proc_2025-02-18.parquet
+2026-04-04 12:08:57,547 [INFO]   Deleted old parquet: proc_2025-02-19.parquet
+2026-04-04 12:08:57,547 [INFO]   Deleted old parquet: proc_2025-02-20.parquet
+2026-04-04 12:08:57,548 [INFO]   Deleted old parquet: proc_2025-02-21.parquet
+2026-04-04 12:08:57,548 [INFO]   Deleted old parquet: proc_2025-02-22.parquet
+2026-04-04 12:08:57,549 [INFO]   Deleted old parquet: proc_2025-02-23.parquet
+2026-04-04 12:08:57,550 [INFO]   Deleted old parquet: proc_2025-02-24.parquet
+2026-04-04 12:08:57,551 [INFO]   Deleted old parquet: proc_2025-02-25.parquet
+2026-04-04 12:08:57,552 [INFO]   Deleted old parquet: proc_2025-02-26.parquet
+2026-04-04 12:08:57,553 [INFO]   Deleted old parquet: proc_2025-02-27.parquet
+2026-04-04 12:08:57,553 [INFO]   Deleted old parquet: proc_2025-02-28.parquet
+2026-04-04 12:08:57,555 [INFO]   Deleted old parquet: proc_2025-03-01.parquet
+2026-04-04 12:08:57,555 [INFO]   Deleted old parquet: proc_2025-03-02.parquet
+2026-04-04 12:08:57,556 [INFO]   Deleted old parquet: proc_2025-03-03.parquet
+2026-04-04 12:08:57,556 [INFO]   Deleted old parquet: proc_2025-03-04.parquet
+2026-04-04 12:08:57,557 [INFO]   Deleted old parquet: proc_2025-03-05.parquet
+2026-04-04 12:08:57,558 [INFO]   Deleted old parquet: proc_2025-03-06.parquet
+2026-04-04 12:08:57,558 [INFO]   Deleted old parquet: proc_2025-03-07.parquet
+2026-04-04 12:08:57,559 [INFO]   Deleted old parquet: proc_2025-03-08.parquet
+2026-04-04 12:08:57,560 [INFO]   Deleted old parquet: proc_2025-03-09.parquet
+2026-04-04 12:08:57,560 [INFO]   Deleted old parquet: proc_2025-03-10.parquet
+2026-04-04 12:08:57,561 [INFO]   Deleted old parquet: proc_2025-03-11.parquet
+2026-04-04 12:08:57,562 [INFO]   Deleted old parquet: proc_2025-03-12.parquet
+2026-04-04 12:08:57,563 [INFO]   Deleted old parquet: proc_2025-03-13.parquet
+2026-04-04 12:08:57,566 [INFO]   Deleted old parquet: proc_2025-03-14.parquet
+2026-04-04 12:08:57,568 [INFO]   Deleted old parquet: proc_2025-03-15.parquet
+2026-04-04 12:08:57,569 [INFO]   Deleted old parquet: proc_2025-03-16.parquet
+2026-04-04 12:08:57,570 [INFO]   Deleted old parquet: proc_2025-03-17.parquet
+2026-04-04 12:08:57,572 [INFO]   Deleted old parquet: proc_2025-03-18.parquet
+2026-04-04 12:08:57,573 [INFO]   Deleted old parquet: proc_2025-03-19.parquet
+2026-04-04 12:08:57,575 [INFO]   Deleted old parquet: proc_2025-03-20.parquet
+2026-04-04 12:08:57,576 [INFO]   Deleted old parquet: proc_2025-03-21.parquet
+2026-04-04 12:08:57,578 [INFO]   Deleted old parquet: proc_2025-03-22.parquet
+2026-04-04 12:08:57,579 [INFO]   Deleted old parquet: proc_2025-03-23.parquet
+2026-04-04 12:08:57,582 [INFO]   Deleted old parquet: proc_2025-03-24.parquet
+2026-04-04 12:08:57,583 [INFO]   Deleted old parquet: proc_2025-03-25.parquet
+2026-04-04 12:08:57,584 [INFO]   Deleted old parquet: proc_2025-03-26.parquet
+2026-04-04 12:08:57,585 [INFO]   Deleted old parquet: proc_2025-03-27.parquet
+2026-04-04 12:08:57,586 [INFO]   Deleted old parquet: proc_2025-03-28.parquet
+2026-04-04 12:08:57,586 [INFO]   Deleted old parquet: proc_2025-03-29.parquet
+2026-04-04 12:08:57,587 [INFO]   Deleted old parquet: proc_2025-03-30.parquet
+2026-04-04 12:08:57,587 [INFO]   Deleted old parquet: proc_2025-03-31.parquet
+2026-04-04 12:08:57,588 [INFO]   Deleted old parquet: proc_2025-04-01.parquet
+2026-04-04 12:08:57,589 [INFO]   Deleted old parquet: proc_2025-04-02.parquet
+2026-04-04 12:08:57,589 [INFO]   Deleted old parquet: proc_2025-04-03.parquet
+2026-04-04 12:08:57,590 [INFO]   Deleted old parquet: proc_2025-04-04.parquet
+2026-04-04 12:08:57,591 [INFO]   Deleted old parquet: proc_2025-04-05.parquet
+2026-04-04 12:08:57,591 [INFO]   Deleted old parquet: proc_2025-04-06.parquet
+2026-04-04 12:08:57,592 [INFO]   Deleted old parquet: proc_2025-04-07.parquet
+2026-04-04 12:08:57,593 [INFO]   Deleted old parquet: proc_2025-04-08.parquet
+2026-04-04 12:08:57,593 [INFO]   Deleted old parquet: proc_2025-04-09.parquet
+2026-04-04 12:08:57,594 [INFO]   Deleted old parquet: proc_2025-04-10.parquet
+2026-04-04 12:08:57,595 [INFO]   Deleted old parquet: proc_2025-04-11.parquet
+2026-04-04 12:08:57,595 [INFO]   Deleted old parquet: proc_2025-04-12.parquet
+2026-04-04 12:08:57,596 [INFO]   Deleted old parquet: proc_2025-04-13.parquet
+2026-04-04 12:08:57,598 [INFO]   Deleted old parquet: proc_2025-04-14.parquet
+2026-04-04 12:08:57,598 [INFO]   Deleted old parquet: proc_2025-04-15.parquet
+2026-04-04 12:08:57,599 [INFO]   Deleted old parquet: proc_2025-04-16.parquet
+2026-04-04 12:08:57,600 [INFO]   Deleted old parquet: proc_2025-04-17.parquet
+2026-04-04 12:08:57,601 [INFO]   Deleted old parquet: proc_2025-04-18.parquet
+2026-04-04 12:08:57,601 [INFO]   Deleted old parquet: proc_2025-04-19.parquet
+2026-04-04 12:08:57,602 [INFO]   Deleted old parquet: proc_2025-04-20.parquet
+2026-04-04 12:08:57,602 [INFO]   Deleted old parquet: proc_2025-04-21.parquet
+2026-04-04 12:08:57,603 [INFO]   Deleted old parquet: proc_2025-04-22.parquet
+2026-04-04 12:08:57,604 [INFO]   Deleted old parquet: proc_2025-04-23.parquet
+2026-04-04 12:08:57,604 [INFO]   Deleted old parquet: proc_2025-04-24.parquet
+2026-04-04 12:08:57,605 [INFO]   Deleted old parquet: proc_2025-04-25.parquet
+2026-04-04 12:08:57,606 [INFO]   Deleted old parquet: proc_2025-04-26.parquet
+2026-04-04 12:08:57,606 [INFO]   Deleted old parquet: proc_2025-04-27.parquet
+2026-04-04 12:08:57,607 [INFO]   Deleted old parquet: proc_2025-04-28.parquet
+2026-04-04 12:08:57,608 [INFO]   Deleted old parquet: proc_2025-04-29.parquet
+2026-04-04 12:08:57,608 [INFO]   Deleted old parquet: proc_2025-04-30.parquet
+2026-04-04 12:08:57,609 [INFO]   Deleted old parquet: proc_2025-05-01.parquet
+2026-04-04 12:08:57,610 [INFO]   Deleted old parquet: proc_2025-05-02.parquet
+2026-04-04 12:08:57,610 [INFO]   Deleted old parquet: proc_2025-05-03.parquet
+2026-04-04 12:08:57,611 [INFO]   Deleted old parquet: proc_2025-05-04.parquet
+2026-04-04 12:08:57,611 [INFO]   Deleted old parquet: proc_2025-05-05.parquet
+2026-04-04 12:08:57,612 [INFO]   Deleted old parquet: proc_2025-05-06.parquet
+2026-04-04 12:08:57,613 [INFO]   Deleted old parquet: proc_2025-05-07.parquet
+2026-04-04 12:08:57,613 [INFO]   Deleted old parquet: proc_2025-05-08.parquet
+2026-04-04 12:08:57,614 [INFO]   Deleted old parquet: proc_2025-05-09.parquet
+2026-04-04 12:08:57,614 [INFO]   Deleted old parquet: proc_2025-05-10.parquet
+2026-04-04 12:08:57,615 [INFO]   Deleted old parquet: proc_2025-05-11.parquet
+2026-04-04 12:08:57,616 [INFO]   Deleted old parquet: proc_2025-05-12.parquet
+2026-04-04 12:08:57,617 [INFO]   Deleted old parquet: proc_2025-05-13.parquet
+2026-04-04 12:08:57,617 [INFO]   Deleted old parquet: proc_2025-05-14.parquet
+2026-04-04 12:08:57,618 [INFO]   Deleted old parquet: proc_2025-05-15.parquet
+2026-04-04 12:08:57,618 [INFO]   Deleted old parquet: proc_2025-05-16.parquet
+2026-04-04 12:08:57,619 [INFO]   Deleted old parquet: proc_2025-05-17.parquet
+2026-04-04 12:08:57,620 [INFO]   Deleted old parquet: proc_2025-05-18.parquet
+2026-04-04 12:08:57,620 [INFO]   Deleted old parquet: proc_2025-05-19.parquet
+2026-04-04 12:08:57,621 [INFO]   Deleted old parquet: proc_2025-05-20.parquet
+2026-04-04 12:08:57,621 [INFO]   Deleted old parquet: proc_2025-05-21.parquet
+2026-04-04 12:08:57,622 [INFO]   Deleted old parquet: proc_2025-05-22.parquet
+2026-04-04 12:08:57,623 [INFO]   Deleted old parquet: proc_2025-05-23.parquet
+2026-04-04 12:08:57,623 [INFO]   Deleted old parquet: proc_2025-05-24.parquet
+2026-04-04 12:08:57,624 [INFO]   Deleted old parquet: proc_2025-05-25.parquet
+2026-04-04 12:08:57,625 [INFO]   Deleted old parquet: proc_2025-05-26.parquet
+2026-04-04 12:08:57,625 [INFO]   Deleted old parquet: proc_2025-05-27.parquet
+2026-04-04 12:08:57,626 [INFO]   Deleted old parquet: proc_2025-05-28.parquet
+2026-04-04 12:08:57,626 [INFO]   Deleted old parquet: proc_2025-05-29.parquet
+2026-04-04 12:08:57,627 [INFO]   Deleted old parquet: proc_2025-05-30.parquet
+2026-04-04 12:08:57,628 [INFO]   Deleted old parquet: proc_2025-05-31.parquet
+2026-04-04 12:08:57,628 [INFO]   Deleted old parquet: proc_2025-06-01.parquet
+2026-04-04 12:08:57,629 [INFO]   Deleted old parquet: proc_2025-06-02.parquet
+2026-04-04 12:08:57,630 [INFO]   Deleted old parquet: proc_2025-06-03.parquet
+2026-04-04 12:08:57,630 [INFO]   Deleted old parquet: proc_2025-06-04.parquet
+2026-04-04 12:08:57,631 [INFO]   Deleted old parquet: proc_2025-06-05.parquet
+2026-04-04 12:08:57,632 [INFO]   Deleted old parquet: proc_2025-06-06.parquet
+2026-04-04 12:08:57,632 [INFO]   Deleted old parquet: proc_2025-06-07.parquet
+2026-04-04 12:08:57,633 [INFO]   Deleted old parquet: proc_2025-06-08.parquet
+2026-04-04 12:08:57,633 [INFO]   Deleted old parquet: proc_2025-06-09.parquet
+2026-04-04 12:08:57,634 [INFO]   Deleted old parquet: proc_2025-06-10.parquet
+2026-04-04 12:08:57,635 [INFO]   Deleted old parquet: proc_2025-06-11.parquet
+2026-04-04 12:08:57,635 [INFO]   Deleted old parquet: proc_2025-06-12.parquet
+2026-04-04 12:08:57,636 [INFO]   Deleted old parquet: proc_2025-06-13.parquet
+2026-04-04 12:08:57,637 [INFO]   Deleted old parquet: proc_2025-06-14.parquet
+2026-04-04 12:08:57,637 [INFO]   Deleted old parquet: proc_2025-06-15.parquet
+2026-04-04 12:08:57,638 [INFO]   Deleted old parquet: proc_2025-06-16.parquet
+2026-04-04 12:08:57,639 [INFO]   Deleted old parquet: proc_2025-06-17.parquet
+2026-04-04 12:08:57,639 [INFO]   Deleted old parquet: proc_2025-06-18.parquet
+2026-04-04 12:08:57,640 [INFO]   Deleted old parquet: proc_2025-06-19.parquet
+2026-04-04 12:08:57,640 [INFO]   Deleted old parquet: proc_2025-06-20.parquet
+2026-04-04 12:08:57,641 [INFO]   Deleted old parquet: proc_2025-06-21.parquet
+2026-04-04 12:08:57,642 [INFO]   Deleted old parquet: proc_2025-06-22.parquet
+2026-04-04 12:08:57,642 [INFO]   Deleted old parquet: proc_2025-06-23.parquet
+2026-04-04 12:08:57,643 [INFO]   Deleted old parquet: proc_2025-06-24.parquet
+2026-04-04 12:08:57,644 [INFO]   Deleted old parquet: proc_2025-06-25.parquet
+2026-04-04 12:08:57,644 [INFO]   Deleted old parquet: proc_2025-06-26.parquet
+2026-04-04 12:08:57,645 [INFO]   Deleted old parquet: proc_2025-06-27.parquet
+2026-04-04 12:08:57,645 [INFO]   Deleted old parquet: proc_2025-06-28.parquet
+2026-04-04 12:08:57,646 [INFO]   Deleted old parquet: proc_2025-06-29.parquet
+2026-04-04 12:08:57,647 [INFO]   Deleted old parquet: proc_2025-06-30.parquet
+2026-04-04 12:08:57,647 [INFO]   Deleted old parquet: proc_2025-07-01.parquet
+2026-04-04 12:08:57,648 [INFO]   Deleted old parquet: proc_2025-07-02.parquet
+2026-04-04 12:08:57,648 [INFO]   Deleted old parquet: proc_2025-07-03.parquet
+2026-04-04 12:08:57,649 [INFO]   Deleted old parquet: proc_2025-07-04.parquet
+2026-04-04 12:08:57,650 [INFO]   Deleted old parquet: proc_2025-07-05.parquet
+2026-04-04 12:08:57,650 [INFO]   Deleted old parquet: proc_2025-07-06.parquet
+2026-04-04 12:08:57,651 [INFO]   Deleted old parquet: proc_2025-07-07.parquet
+2026-04-04 12:08:57,652 [INFO]   Deleted old parquet: proc_2025-07-08.parquet
+2026-04-04 12:08:57,652 [INFO]   Deleted old parquet: proc_2025-07-09.parquet
+2026-04-04 12:08:57,653 [INFO]   Deleted old parquet: proc_2025-07-10.parquet
+2026-04-04 12:08:57,653 [INFO]   Deleted old parquet: proc_2025-07-11.parquet
+2026-04-04 12:08:57,654 [INFO]   Deleted old parquet: proc_2025-07-12.parquet
+2026-04-04 12:08:57,655 [INFO]   Deleted old parquet: proc_2025-07-13.parquet
+2026-04-04 12:08:57,655 [INFO]   Deleted old parquet: proc_2025-07-14.parquet
+2026-04-04 12:08:57,656 [INFO]   Deleted old parquet: proc_2025-07-15.parquet
+2026-04-04 12:08:57,656 [INFO]   Deleted old parquet: proc_2025-07-16.parquet
+2026-04-04 12:08:57,657 [INFO]   Deleted old parquet: proc_2025-07-17.parquet
+2026-04-04 12:08:57,657 [INFO]   Deleted old parquet: proc_2025-07-18.parquet
+2026-04-04 12:08:57,658 [INFO]   Deleted old parquet: proc_2025-07-19.parquet
+2026-04-04 12:08:57,659 [INFO]   Deleted old parquet: proc_2025-07-20.parquet
+2026-04-04 12:08:57,659 [INFO]   Deleted old parquet: proc_2025-07-21.parquet
+2026-04-04 12:08:57,660 [INFO]   Deleted old parquet: proc_2025-07-22.parquet
+2026-04-04 12:08:57,661 [INFO]   Deleted old parquet: proc_2025-07-23.parquet
+2026-04-04 12:08:57,661 [INFO]   Deleted old parquet: proc_2025-07-24.parquet
+2026-04-04 12:08:57,662 [INFO]   Deleted old parquet: proc_2025-07-25.parquet
+2026-04-04 12:08:57,663 [INFO]   Deleted old parquet: proc_2025-07-26.parquet
+2026-04-04 12:08:57,663 [INFO]   Deleted old parquet: proc_2025-07-27.parquet
+2026-04-04 12:08:57,664 [INFO]   Deleted old parquet: proc_2025-07-28.parquet
+2026-04-04 12:08:57,665 [INFO]   Deleted old parquet: proc_2025-07-29.parquet
+2026-04-04 12:08:57,665 [INFO]   Deleted old parquet: proc_2025-07-30.parquet
+2026-04-04 12:08:57,666 [INFO]   Deleted old parquet: proc_2025-07-31.parquet
+2026-04-04 12:08:57,666 [INFO]   Deleted old parquet: proc_2025-08-01.parquet
+2026-04-04 12:08:57,667 [INFO]   Deleted old parquet: proc_2025-08-02.parquet
+2026-04-04 12:08:57,668 [INFO]   Deleted old parquet: proc_2025-08-03.parquet
+2026-04-04 12:08:57,668 [INFO]   Deleted old parquet: proc_2025-08-04.parquet
+2026-04-04 12:08:57,669 [INFO]   Deleted old parquet: proc_2025-08-05.parquet
+2026-04-04 12:08:57,669 [INFO]   Deleted old parquet: proc_2025-08-06.parquet
+2026-04-04 12:08:57,670 [INFO]   Deleted old parquet: proc_2025-08-07.parquet
+2026-04-04 12:08:57,671 [INFO]   Deleted old parquet: proc_2025-08-08.parquet
+2026-04-04 12:08:57,671 [INFO]   Deleted old parquet: proc_2025-08-09.parquet
+2026-04-04 12:08:57,672 [INFO]   Deleted old parquet: proc_2025-08-10.parquet
+2026-04-04 12:08:57,672 [INFO]   Deleted old parquet: proc_2025-08-11.parquet
+2026-04-04 12:08:57,673 [INFO]   Deleted old parquet: proc_2025-08-12.parquet
+2026-04-04 12:08:57,674 [INFO]   Deleted old parquet: proc_2025-08-13.parquet
+2026-04-04 12:08:57,674 [INFO]   Deleted old parquet: proc_2025-08-14.parquet
+2026-04-04 12:08:57,675 [INFO]   Deleted old parquet: proc_2025-08-15.parquet
+2026-04-04 12:08:57,675 [INFO]   Deleted old parquet: proc_2025-08-16.parquet
+2026-04-04 12:08:57,676 [INFO]   Deleted old parquet: proc_2025-08-17.parquet
+2026-04-04 12:08:57,677 [INFO]   Deleted old parquet: proc_2025-08-18.parquet
+2026-04-04 12:08:57,677 [INFO]   Deleted old parquet: proc_2025-08-19.parquet
+2026-04-04 12:08:57,678 [INFO]   Deleted old parquet: proc_2025-08-20.parquet
+2026-04-04 12:08:57,678 [INFO]   Deleted old parquet: proc_2025-08-21.parquet
+2026-04-04 12:08:57,679 [INFO]   Deleted old parquet: proc_2025-08-22.parquet
+2026-04-04 12:08:57,679 [INFO]   Deleted old parquet: proc_2025-08-23.parquet
+2026-04-04 12:08:57,680 [INFO]   Deleted old parquet: proc_2025-08-24.parquet
+2026-04-04 12:08:57,681 [INFO]   Deleted old parquet: proc_2025-08-25.parquet
+2026-04-04 12:08:57,681 [INFO]   Deleted old parquet: proc_2025-08-26.parquet
+2026-04-04 12:08:57,682 [INFO]   Deleted old parquet: proc_2025-08-27.parquet
+2026-04-04 12:08:57,682 [INFO]   Deleted old parquet: proc_2025-08-28.parquet
+2026-04-04 12:08:57,683 [INFO]   Deleted old parquet: proc_2025-08-29.parquet
+2026-04-04 12:08:57,684 [INFO]   Deleted old parquet: proc_2025-08-30.parquet
+2026-04-04 12:08:57,684 [INFO]   Deleted old parquet: proc_2025-08-31.parquet
+2026-04-04 12:08:57,685 [INFO]   Deleted old parquet: proc_2025-09-01.parquet
+2026-04-04 12:08:57,686 [INFO]   Deleted old parquet: proc_2025-09-02.parquet
+2026-04-04 12:08:57,686 [INFO]   Deleted old parquet: proc_2025-09-03.parquet
+2026-04-04 12:08:57,687 [INFO]   Deleted old parquet: proc_2025-09-04.parquet
+2026-04-04 12:08:57,688 [INFO]   Deleted old parquet: proc_2025-09-05.parquet
+2026-04-04 12:08:57,688 [INFO]   Deleted old parquet: proc_2025-09-06.parquet
+2026-04-04 12:08:57,689 [INFO]   Deleted old parquet: proc_2025-09-07.parquet
+2026-04-04 12:08:57,689 [INFO]   Deleted old parquet: proc_2025-09-08.parquet
+2026-04-04 12:08:57,690 [INFO]   Deleted old parquet: proc_2025-09-09.parquet
+2026-04-04 12:08:57,691 [INFO]   Deleted old parquet: proc_2025-09-10.parquet
+2026-04-04 12:08:57,691 [INFO]   Deleted old parquet: proc_2025-09-11.parquet
+2026-04-04 12:08:57,692 [INFO]   Deleted old parquet: proc_2025-09-12.parquet
+2026-04-04 12:08:57,693 [INFO]   Deleted old parquet: proc_2025-09-13.parquet
+2026-04-04 12:08:57,693 [INFO]   Deleted old parquet: proc_2025-09-14.parquet
+2026-04-04 12:08:57,694 [INFO]   Deleted old parquet: proc_2025-09-15.parquet
+2026-04-04 12:08:57,695 [INFO]   Deleted old parquet: proc_2025-09-16.parquet
+2026-04-04 12:08:57,695 [INFO]   Deleted old parquet: proc_2025-09-17.parquet
+2026-04-04 12:08:57,696 [INFO]   Deleted old parquet: proc_2025-09-18.parquet
+2026-04-04 12:08:57,696 [INFO]   Deleted old parquet: proc_2025-09-19.parquet
+2026-04-04 12:08:57,697 [INFO]   Deleted old parquet: proc_2025-09-20.parquet
+2026-04-04 12:08:57,698 [INFO]   Deleted old parquet: proc_2025-09-21.parquet
+2026-04-04 12:08:57,698 [INFO]   Deleted old parquet: proc_2025-09-22.parquet
+2026-04-04 12:08:57,699 [INFO]   Deleted old parquet: proc_2025-09-23.parquet
+2026-04-04 12:08:57,699 [INFO]   Deleted old parquet: proc_2025-09-24.parquet
+2026-04-04 12:08:57,700 [INFO]   Deleted old parquet: proc_2025-09-25.parquet
+2026-04-04 12:08:57,701 [INFO]   Deleted old parquet: proc_2025-09-26.parquet
+2026-04-04 12:08:57,701 [INFO]   Deleted old parquet: proc_2025-09-27.parquet
+2026-04-04 12:08:57,702 [INFO]   Deleted old parquet: proc_2025-09-28.parquet
+2026-04-04 12:08:57,702 [INFO]   Deleted old parquet: proc_2025-09-29.parquet
+2026-04-04 12:08:57,703 [INFO]   Deleted old parquet: proc_2025-09-30.parquet
+2026-04-04 12:08:57,704 [INFO]   Deleted old parquet: proc_2025-10-01.parquet
+2026-04-04 12:08:57,704 [INFO]   Deleted old parquet: proc_2025-10-02.parquet
+2026-04-04 12:08:57,705 [INFO]   Deleted old parquet: proc_2025-10-03.parquet
+2026-04-04 12:08:57,706 [INFO]   Deleted old parquet: proc_2025-10-04.parquet
+2026-04-04 12:08:57,706 [INFO]   Deleted old parquet: proc_2025-10-05.parquet
+2026-04-04 12:08:57,707 [INFO]   Deleted old parquet: proc_2025-10-06.parquet
+2026-04-04 12:08:57,708 [INFO]   Deleted old parquet: proc_2025-10-07.parquet
+2026-04-04 12:08:57,708 [INFO]   Deleted old parquet: proc_2025-10-08.parquet
+2026-04-04 12:08:57,709 [INFO]   Deleted old parquet: proc_2025-10-09.parquet
+2026-04-04 12:08:57,710 [INFO]   Deleted old parquet: proc_2025-10-10.parquet
+2026-04-04 12:08:57,710 [INFO]   Deleted old parquet: proc_2025-10-11.parquet
+2026-04-04 12:08:57,711 [INFO]   Deleted old parquet: proc_2025-10-12.parquet
+2026-04-04 12:08:57,712 [INFO]   Deleted old parquet: proc_2025-10-13.parquet
+2026-04-04 12:08:57,713 [INFO]   Deleted old parquet: proc_2025-10-14.parquet
+2026-04-04 12:08:57,714 [INFO]   Deleted old parquet: proc_2025-10-15.parquet
+2026-04-04 12:08:57,714 [INFO]   Deleted old parquet: proc_2025-10-16.parquet
+2026-04-04 12:08:57,715 [INFO]   Deleted old parquet: proc_2025-10-17.parquet
+2026-04-04 12:08:57,716 [INFO]   Deleted old parquet: proc_2025-10-18.parquet
+2026-04-04 12:08:57,716 [INFO]   Deleted old parquet: proc_2025-10-19.parquet
+2026-04-04 12:08:57,717 [INFO]   Deleted old parquet: proc_2025-10-20.parquet
+2026-04-04 12:08:57,718 [INFO]   Deleted old parquet: proc_2025-10-21.parquet
+2026-04-04 12:08:57,718 [INFO]   Deleted old parquet: proc_2025-10-22.parquet
+2026-04-04 12:08:57,719 [INFO]   Deleted old parquet: proc_2025-10-23.parquet
+2026-04-04 12:08:57,719 [INFO]   Deleted old parquet: proc_2025-10-24.parquet
+2026-04-04 12:08:57,720 [INFO]   Deleted old parquet: proc_2025-10-25.parquet
+2026-04-04 12:08:57,720 [INFO]   Deleted old parquet: proc_2025-10-26.parquet
+2026-04-04 12:08:57,721 [INFO]   Deleted old parquet: proc_2025-10-27.parquet
+2026-04-04 12:08:57,722 [INFO]   Deleted old parquet: proc_2025-10-28.parquet
+2026-04-04 12:08:57,722 [INFO]   Deleted old parquet: proc_2025-10-29.parquet
+2026-04-04 12:08:57,723 [INFO]   Deleted old parquet: proc_2025-10-30.parquet
+2026-04-04 12:08:57,724 [INFO]   Deleted old parquet: proc_2025-10-31.parquet
+2026-04-04 12:08:57,725 [INFO]   Deleted old parquet: proc_2025-11-01.parquet
+2026-04-04 12:08:57,725 [INFO]   Deleted old parquet: proc_2025-11-02.parquet
+2026-04-04 12:08:57,726 [INFO]   Deleted old parquet: proc_2025-11-03.parquet
+2026-04-04 12:08:57,727 [INFO]   Deleted old parquet: proc_2025-11-04.parquet
+2026-04-04 12:08:57,727 [INFO]   Deleted old parquet: proc_2025-11-05.parquet
+2026-04-04 12:08:57,728 [INFO]   Deleted old parquet: proc_2025-11-06.parquet
+2026-04-04 12:08:57,728 [INFO]   Deleted old parquet: proc_2025-11-07.parquet
+2026-04-04 12:08:57,729 [INFO]   Deleted old parquet: proc_2025-11-08.parquet
+2026-04-04 12:08:57,730 [INFO]   Deleted old parquet: proc_2025-11-09.parquet
+2026-04-04 12:08:57,730 [INFO]   Deleted old parquet: proc_2025-11-10.parquet
+2026-04-04 12:08:57,731 [INFO]   Deleted old parquet: proc_2025-11-11.parquet
+2026-04-04 12:08:57,731 [INFO]   Deleted old parquet: proc_2025-11-12.parquet
+2026-04-04 12:08:57,732 [INFO]   Deleted old parquet: proc_2025-11-13.parquet
+2026-04-04 12:08:57,733 [INFO]   Deleted old parquet: proc_2025-11-14.parquet
+2026-04-04 12:08:57,733 [INFO]   Deleted old parquet: proc_2025-11-15.parquet
+2026-04-04 12:08:57,734 [INFO]   Deleted old parquet: proc_2025-11-16.parquet
+2026-04-04 12:08:57,735 [INFO]   Deleted old parquet: proc_2025-11-17.parquet
+2026-04-04 12:08:57,735 [INFO]   Deleted old parquet: proc_2025-11-18.parquet
+2026-04-04 12:08:57,736 [INFO]   Deleted old parquet: proc_2025-11-19.parquet
+2026-04-04 12:08:57,736 [INFO]   Deleted old parquet: proc_2025-11-20.parquet
+2026-04-04 12:08:57,737 [INFO]   Deleted old parquet: proc_2025-11-21.parquet
+2026-04-04 12:08:57,737 [INFO]   Deleted old parquet: proc_2025-11-22.parquet
+2026-04-04 12:08:57,738 [INFO]   Deleted old parquet: proc_2025-11-23.parquet
+2026-04-04 12:08:57,738 [INFO]   Deleted old parquet: proc_2025-11-24.parquet
+2026-04-04 12:08:57,739 [INFO]   Deleted old parquet: proc_2025-11-25.parquet
+2026-04-04 12:08:57,739 [INFO]   Deleted old parquet: proc_2025-11-26.parquet
+2026-04-04 12:08:57,740 [INFO]   Deleted old parquet: proc_2025-11-27.parquet
+2026-04-04 12:08:57,741 [INFO]   Deleted old parquet: proc_2025-11-28.parquet
+2026-04-04 12:08:57,741 [INFO]   Deleted old parquet: proc_2025-11-29.parquet
+2026-04-04 12:08:57,742 [INFO]   Deleted old parquet: proc_2025-11-30.parquet
+2026-04-04 12:08:57,742 [INFO]   Deleted old parquet: proc_2025-12-01.parquet
+2026-04-04 12:08:57,743 [INFO]   Deleted old parquet: proc_2025-12-02.parquet
+2026-04-04 12:08:57,743 [INFO]   Deleted old parquet: proc_2025-12-03.parquet
+2026-04-04 12:08:57,744 [INFO]   Deleted old parquet: proc_2025-12-04.parquet
+2026-04-04 12:08:57,744 [INFO]   Deleted old parquet: proc_2025-12-05.parquet
+2026-04-04 12:08:57,745 [INFO]   Deleted old parquet: proc_2025-12-06.parquet
+2026-04-04 12:08:57,746 [INFO]   Deleted old parquet: proc_2025-12-07.parquet
+2026-04-04 12:08:57,746 [INFO]   Deleted old parquet: proc_2025-12-08.parquet
+2026-04-04 12:08:57,747 [INFO]   Deleted old parquet: proc_2025-12-09.parquet
+2026-04-04 12:08:57,748 [INFO]   Deleted old parquet: proc_2025-12-10.parquet
+2026-04-04 12:08:57,749 [INFO]   Deleted old parquet: proc_2025-12-11.parquet
+2026-04-04 12:08:57,749 [INFO]   Deleted old parquet: proc_2025-12-12.parquet
+2026-04-04 12:08:57,750 [INFO]   Deleted old parquet: proc_2025-12-13.parquet
+2026-04-04 12:08:57,751 [INFO]   Deleted old parquet: proc_2025-12-14.parquet
+2026-04-04 12:08:57,752 [INFO]   Deleted old parquet: proc_2025-12-15.parquet
+2026-04-04 12:08:57,752 [INFO]   Deleted old parquet: proc_2025-12-16.parquet
+2026-04-04 12:08:57,754 [INFO]   Deleted old parquet: proc_2025-12-17.parquet
+2026-04-04 12:08:57,754 [INFO]   Deleted old parquet: proc_2025-12-18.parquet
+2026-04-04 12:08:57,755 [INFO]   Deleted old parquet: proc_2025-12-19.parquet
+2026-04-04 12:08:57,756 [INFO]   Deleted old parquet: proc_2025-12-20.parquet
+2026-04-04 12:08:57,757 [INFO]   Deleted old parquet: proc_2025-12-21.parquet
+2026-04-04 12:08:57,757 [INFO]   Deleted old parquet: proc_2025-12-22.parquet
+2026-04-04 12:08:57,758 [INFO]   Deleted old parquet: proc_2025-12-23.parquet
+2026-04-04 12:08:57,758 [INFO]   Deleted old parquet: proc_2025-12-24.parquet
+2026-04-04 12:08:57,759 [INFO]   Deleted old parquet: proc_2025-12-25.parquet
+2026-04-04 12:08:57,760 [INFO]   Deleted old parquet: proc_2025-12-26.parquet
+2026-04-04 12:08:57,760 [INFO]   Deleted old parquet: proc_2025-12-27.parquet
+2026-04-04 12:08:57,761 [INFO]   Deleted old parquet: proc_2025-12-28.parquet
+2026-04-04 12:08:57,762 [INFO]   Deleted old parquet: proc_2025-12-29.parquet
+2026-04-04 12:08:57,762 [INFO]   Deleted old parquet: proc_2025-12-30.parquet
+2026-04-04 12:08:57,763 [INFO]   Deleted old parquet: proc_2025-12-31.parquet
+2026-04-04 12:08:57,764 [INFO]   Deleted old parquet: proc_2026-01-01.parquet
+2026-04-04 12:08:57,764 [INFO]   Deleted old parquet: proc_2026-01-02.parquet
+2026-04-04 12:08:57,765 [INFO]   Deleted old parquet: proc_2026-01-03.parquet
+2026-04-04 12:08:57,765 [INFO]   Deleted old parquet: proc_2026-01-04.parquet
+2026-04-04 12:08:57,766 [INFO]   Deleted old parquet: proc_2026-01-05.parquet
+2026-04-04 12:08:57,766 [INFO]   Deleted old parquet: proc_2026-01-06.parquet
+2026-04-04 12:08:57,767 [INFO]   Deleted old parquet: proc_2026-01-07.parquet
+2026-04-04 12:08:57,768 [INFO]   Deleted old parquet: proc_2026-01-08.parquet
+2026-04-04 12:08:57,768 [INFO]   Deleted old parquet: proc_2026-01-09.parquet
+2026-04-04 12:08:57,769 [INFO]   Deleted old parquet: proc_2026-01-10.parquet
+2026-04-04 12:08:57,770 [INFO]   Deleted old parquet: proc_2026-01-11.parquet
+2026-04-04 12:08:57,770 [INFO]   Deleted old parquet: proc_2026-01-12.parquet
+2026-04-04 12:08:57,771 [INFO]   Deleted old parquet: proc_2026-01-13.parquet
+2026-04-04 12:08:57,772 [INFO]   Deleted old parquet: proc_2026-01-14.parquet
+2026-04-04 12:08:57,772 [INFO]   Deleted old parquet: proc_2026-01-15.parquet
+2026-04-04 12:08:57,773 [INFO]   Deleted old parquet: proc_2026-01-16.parquet
+2026-04-04 12:08:57,774 [INFO]   Deleted old parquet: proc_2026-01-17.parquet
+2026-04-04 12:08:57,774 [INFO]   Deleted old parquet: proc_2026-01-18.parquet
+2026-04-04 12:08:57,775 [INFO]   Deleted old parquet: proc_2026-01-19.parquet
+2026-04-04 12:08:57,775 [INFO]   Deleted old parquet: proc_2026-01-20.parquet
+2026-04-04 12:08:57,776 [INFO]   Deleted old parquet: proc_2026-01-21.parquet
+2026-04-04 12:08:57,777 [INFO]   Deleted old parquet: proc_2026-01-22.parquet
+2026-04-04 12:08:57,777 [INFO]   Deleted old parquet: proc_2026-01-23.parquet
+2026-04-04 12:08:57,778 [INFO]   Deleted old parquet: proc_2026-01-24.parquet
+2026-04-04 12:08:57,779 [INFO]   Deleted old parquet: proc_2026-01-25.parquet
+2026-04-04 12:08:57,779 [INFO]   Deleted old parquet: proc_2026-01-26.parquet
+2026-04-04 12:08:57,780 [INFO]   Deleted old parquet: proc_2026-01-27.parquet
+2026-04-04 12:08:57,781 [INFO]   Deleted old parquet: proc_2026-01-28.parquet
+2026-04-04 12:08:57,781 [INFO]   Deleted old parquet: proc_2026-01-29.parquet
+2026-04-04 12:08:57,782 [INFO]   Deleted old parquet: proc_2026-01-30.parquet
+2026-04-04 12:08:57,783 [INFO]   Deleted old parquet: proc_2026-01-31.parquet
+2026-04-04 12:08:57,783 [INFO]   Deleted old parquet: proc_2026-02-01.parquet
+2026-04-04 12:08:57,784 [INFO]   Deleted old parquet: proc_2026-02-02.parquet
+2026-04-04 12:08:57,785 [INFO]   Deleted old parquet: proc_2026-02-03.parquet
+2026-04-04 12:08:57,786 [INFO]   Deleted old parquet: proc_2026-02-04.parquet
+2026-04-04 12:08:57,786 [INFO]   Deleted old parquet: proc_2026-02-05.parquet
+2026-04-04 12:08:57,787 [INFO]   Deleted old parquet: proc_2026-02-06.parquet
+2026-04-04 12:08:57,787 [INFO]   Deleted old parquet: proc_2026-02-07.parquet
+2026-04-04 12:08:57,788 [INFO]   Deleted old parquet: proc_2026-02-08.parquet
+2026-04-04 12:08:57,789 [INFO]   Deleted old parquet: proc_2026-02-09.parquet
+2026-04-04 12:08:57,789 [INFO]   Deleted old parquet: proc_2026-02-10.parquet
+2026-04-04 12:08:57,790 [INFO]   Deleted old parquet: proc_2026-02-11.parquet
+2026-04-04 12:08:57,790 [INFO]   Deleted old parquet: proc_2026-02-12.parquet
+2026-04-04 12:08:57,791 [INFO]   Deleted old parquet: proc_2026-02-13.parquet
+2026-04-04 12:08:57,792 [INFO]   Deleted old parquet: proc_2026-02-14.parquet
+2026-04-04 12:08:57,792 [INFO]   Deleted old parquet: proc_2026-02-15.parquet
+2026-04-04 12:08:57,793 [INFO]   Deleted old parquet: proc_2026-02-16.parquet
+2026-04-04 12:08:57,794 [INFO]   Deleted old parquet: proc_2026-02-17.parquet
+2026-04-04 12:08:57,795 [INFO] Purged 411 parquet files older than 2026-02-18
+2026-04-04 12:08:57,799 [INFO] Building snapshot for 2026-03-31
+2026-04-04 12:08:57,799 [INFO]   MTD:   2026-03-01 -> 2026-03-31  (31d)
+2026-04-04 12:08:57,799 [INFO]   LM:    2026-02-01 -> 2026-02-28  (28d)
+2026-04-04 12:08:57,799 [INFO]   LMTD:  2026-02-01 -> 2026-03-03  (31d)
+2026-04-04 12:08:57,800 [INFO]   LYMTD: 2025-03-01 -> 2025-03-31  (31d)
+2026-04-04 12:08:57,800 [INFO]   LYSM:  2025-03-01 -> 2025-03-31
+2026-04-04 12:13:24,591 [INFO] Snapshot built -- 4,884 HPCs
+2026-04-04 12:13:30,609 [INFO] Building farmer health for 2026-03-31
+2026-04-04 12:13:35,534 [INFO] Farmer health built — 4,788 HPCs for 2026-03-31
+2026-04-04 12:13:36,200 [INFO] Building farmer RFM for 2026-03-31
+2026-04-04 12:13:36,745 [INFO]   RFM thresholds: F=[30,31d] M=[5424.67,13680.42 Rs]
+2026-04-04 12:13:37,540 [INFO]   Dormant candidate count: 9,440
+2026-04-04 12:13:37,595 [INFO]   Current month active farmers: 91,814
+2026-04-04 12:13:41,347 [INFO]   Current month active farmers : 91,814
+2026-04-04 12:13:41,348 [INFO]   Dormant candidates (LM->now) : 9,440
+2026-04-04 12:13:41,349 [INFO]   Churned candidates (2m->now) : 8,693
+2026-04-04 12:14:14,811 [INFO]   RFM At Risk: 27,420
+2026-04-04 12:14:14,812 [INFO]   RFM Champion: 49,752
+2026-04-04 12:14:14,813 [INFO]   RFM Churned: 8,608
+2026-04-04 12:14:14,813 [INFO]   RFM Dormant: 9,440
+2026-04-04 12:14:14,814 [INFO]   RFM Loyal: 14,642
+2026-04-21 07:06:30,332 [INFO] Default admin user created: admin / admin@123 — CHANGE THIS IMMEDIATELY
+2026-04-21 07:06:30,368 [INFO] Backfill from 2024-06
+2026-04-21 07:06:31,160 [INFO] No existing data — fetching from 2025-03-22
+2026-04-21 07:08:20,936 [INFO] Split into 54 batch(es) of up to 7 days each
+2026-04-21 07:08:20,937 [INFO]   Batch 1/54: querying 7 days (2025-03-23 to 2025-03-29)
+2026-04-21 07:12:24,528 [INFO] Backfill from 2024-06
+2026-04-21 07:12:25,756 [INFO] No existing data — fetching from 2025-03-22
+2026-04-21 07:12:28,259 [INFO] SQL Server has 374 new date(s): 2025-03-23 -> 2026-03-31
+2026-04-21 07:12:28,260 [INFO] Split into 54 batch(es) of up to 7 days each
+2026-04-21 07:12:28,263 [INFO]   Batch 1/54: querying 7 days (2025-03-23 to 2025-03-29)
+2026-04-21 07:30:00,909 [INFO] Migrated proc_period_snapshot — added region_active_days
+2026-04-21 07:30:00,910 [INFO] Migrated proc_period_snapshot — added has_mtd_data
+2026-04-21 07:30:01,006 [INFO] === Nightly pipeline starting ===
+2026-04-21 07:30:01,787 [INFO] Latest date already in SQLite: 2026-03-31
+2026-04-21 07:30:01,788 [INFO] Will only fetch dates strictly after 2026-03-31
+2026-04-21 07:30:04,338 [INFO] Already up to date — no new dates found in SQL Server
+2026-04-21 07:30:04,584 [INFO] Nothing new to fetch — rebuilding snapshot only
+2026-04-21 07:30:04,592 [INFO] Building snapshot for 2026-03-31
+2026-04-21 07:30:04,593 [INFO]   MTD:   2026-03-01 -> 2026-03-31  (31d)
+2026-04-21 07:30:04,594 [INFO]   LM:    2026-02-01 -> 2026-02-28  (28d)
+2026-04-21 07:30:04,594 [INFO]   LMTD:  2026-02-01 -> 2026-03-03  (31d)
+2026-04-21 07:30:04,595 [INFO]   LYMTD: 2025-03-01 -> 2025-03-31  (31d)
+2026-04-21 07:30:04,595 [INFO]   LYSM:  2025-03-01 -> 2025-03-31
+2026-04-21 07:33:00,149 [INFO] Snapshot built — 4,884 HPCs
+2026-04-21 07:33:00,198 [INFO] Building farmer health for 2026-03-31
+2026-04-21 07:33:04,065 [INFO] Farmer health built — 4,788 HPCs for 2026-03-31
+2026-04-21 07:33:04,096 [INFO] Building farmer RFM for 2026-03-31
+2026-04-21 07:33:05,037 [INFO]   RFM thresholds: F=[30,31d] M=[5424.67,13680.42 Rs]
+2026-04-21 07:33:07,238 [INFO]   Dormant candidate count: 9,440
+2026-04-21 07:33:07,385 [INFO]   Current month active farmers: 91,814
+2026-04-21 07:33:11,433 [INFO]   Current month active farmers : 91,814
+2026-04-21 07:33:11,433 [INFO]   Dormant candidates (LM->now) : 9,440
+2026-04-21 07:33:11,434 [INFO]   Churned candidates (2m->now) : 8,693
+2026-04-21 07:33:20,772 [INFO]   RFM At Risk: 27,420
+2026-04-21 07:33:20,774 [INFO]   RFM Champion: 49,752
+2026-04-21 07:33:20,775 [INFO]   RFM Churned: 8,608
+2026-04-21 07:33:20,776 [INFO]   RFM Dormant: 9,440
+2026-04-21 07:33:20,776 [INFO]   RFM Loyal: 14,642
+2026-04-21 11:28:34,493 [INFO] === Nightly pipeline starting ===
+2026-04-21 11:28:36,078 [INFO] Latest date already in SQLite: 2026-03-31
+2026-04-21 11:28:36,079 [INFO] Will only fetch dates strictly after 2026-03-31
+2026-04-21 11:31:26,622 [INFO] SQL Server has 12 new date(s): 2026-04-01 -> 2026-04-12
+2026-04-21 11:31:26,623 [INFO]   Fetching day 1/12: 2026-04-01
+2026-04-21 11:31:56,682 [INFO]     Saved 99,229 rows
+2026-04-21 11:31:56,683 [INFO]   Fetching day 2/12: 2026-04-02
+2026-04-21 11:32:21,035 [INFO]     Saved 99,090 rows
+2026-04-21 11:32:21,035 [INFO]   Fetching day 3/12: 2026-04-03
+2026-04-21 11:32:47,682 [INFO]     Saved 99,618 rows
+2026-04-21 11:32:47,682 [INFO]   Fetching day 4/12: 2026-04-04
+2026-04-21 11:33:12,349 [INFO]     Saved 99,359 rows
+2026-04-21 11:33:12,382 [INFO]   Fetching day 5/12: 2026-04-05
+2026-04-21 11:33:50,638 [INFO]     Saved 99,308 rows
+2026-04-21 11:33:50,639 [INFO]   Fetching day 6/12: 2026-04-06
+2026-04-21 11:34:21,229 [INFO]     Saved 99,654 rows
+2026-04-21 11:34:21,229 [INFO]   Fetching day 7/12: 2026-04-07
+2026-04-21 11:34:46,602 [INFO]     Saved 99,666 rows
+2026-04-21 11:34:46,602 [INFO]   Fetching day 8/12: 2026-04-08
+2026-04-21 11:35:14,892 [INFO]     Saved 99,599 rows
+2026-04-21 11:35:14,892 [INFO]   Fetching day 9/12: 2026-04-09
+2026-04-21 11:35:40,692 [INFO]     Saved 99,749 rows
+2026-04-21 11:35:40,692 [INFO]   Fetching day 10/12: 2026-04-10
+2026-04-21 11:45:34,022 [INFO] === Nightly pipeline starting ===
+2026-04-21 11:45:36,546 [INFO] Latest date already in SQLite: 2026-03-31
+2026-04-21 11:45:36,547 [INFO] Will only fetch dates strictly after 2026-03-31
+2026-04-21 11:45:38,803 [INFO] SQL Server has 12 new date(s): 2026-04-01 -> 2026-04-12
+2026-04-21 11:45:38,803 [INFO]   Fetching day 1/12: 2026-04-01
+2026-04-21 11:45:38,804 [INFO]   Fetching day 2/12: 2026-04-02
+2026-04-21 11:45:38,804 [INFO]   Fetching day 3/12: 2026-04-03
+2026-04-21 11:45:38,805 [INFO]   Fetching day 4/12: 2026-04-04
+2026-04-21 11:45:38,805 [INFO]   Fetching day 5/12: 2026-04-05
+2026-04-21 11:45:38,806 [INFO]   Fetching day 6/12: 2026-04-06
+2026-04-21 11:45:38,807 [INFO]   Fetching day 7/12: 2026-04-07
+2026-04-21 11:45:38,807 [INFO]   Fetching day 8/12: 2026-04-08
+2026-04-21 11:45:38,807 [INFO]   Fetching day 9/12: 2026-04-09
+2026-04-21 11:45:38,809 [INFO]   Fetching day 10/12: 2026-04-10
+2026-04-21 11:46:27,163 [INFO]     Saved 100,002 rows
+2026-04-21 11:46:27,164 [INFO]   Fetching day 11/12: 2026-04-11
+2026-04-21 11:46:49,461 [INFO]     Saved 93,911 rows
+2026-04-21 11:46:49,462 [INFO]   Fetching day 12/12: 2026-04-12
+2026-04-21 11:47:13,782 [INFO]     Saved 90,442 rows
+2026-04-21 11:47:13,782 [INFO] Fetch complete — 3 days, 284,355 rows total
+2026-04-21 11:47:14,480 [INFO]   2026-04: 12 files, 30 days in month
+2026-04-21 11:47:27,134 [INFO]     daily_hpc:    95,605 rows
+2026-04-21 11:47:27,548 [INFO]     monthly_hpc:  4,414 rows
+2026-04-21 11:47:32,348 [INFO]     monthly_farmer: 53,597 rows
+2026-04-21 11:47:51,687 [INFO]     quality_incidents: 280,610 rows
+2026-04-21 11:48:05,808 [INFO]   proc_quality_incidents: deleted 773,181 rows (before 2025-04-21)
+2026-04-21 11:48:08,123 [INFO]   Deleted old parquet: proc_2025-01-20.parquet
+2026-04-21 11:48:08,126 [INFO]   Deleted old parquet: proc_2025-01-21.parquet
+2026-04-21 11:48:08,128 [INFO]   Deleted old parquet: proc_2025-01-22.parquet
+2026-04-21 11:48:08,131 [INFO]   Deleted old parquet: proc_2025-01-23.parquet
+2026-04-21 11:48:08,133 [INFO]   Deleted old parquet: proc_2025-01-24.parquet
+2026-04-21 11:48:08,136 [INFO]   Deleted old parquet: proc_2025-01-25.parquet
+2026-04-21 11:48:08,138 [INFO]   Deleted old parquet: proc_2025-01-26.parquet
+2026-04-21 11:48:08,140 [INFO]   Deleted old parquet: proc_2025-01-27.parquet
+2026-04-21 11:48:08,142 [INFO]   Deleted old parquet: proc_2025-01-28.parquet
+2026-04-21 11:48:08,146 [INFO]   Deleted old parquet: proc_2025-01-29.parquet
+2026-04-21 11:48:08,149 [INFO]   Deleted old parquet: proc_2025-01-30.parquet
+2026-04-21 11:48:08,152 [INFO]   Deleted old parquet: proc_2025-01-31.parquet
+2026-04-21 11:48:08,154 [INFO]   Deleted old parquet: proc_2025-02-01.parquet
+2026-04-21 11:48:08,156 [INFO]   Deleted old parquet: proc_2025-02-02.parquet
+2026-04-21 11:48:08,159 [INFO]   Deleted old parquet: proc_2025-02-03.parquet
+2026-04-21 11:48:08,161 [INFO]   Deleted old parquet: proc_2025-02-04.parquet
+2026-04-21 11:48:08,163 [INFO]   Deleted old parquet: proc_2025-02-05.parquet
+2026-04-21 11:48:08,167 [INFO]   Deleted old parquet: proc_2025-02-06.parquet
+2026-04-21 11:48:08,171 [INFO]   Deleted old parquet: proc_2025-02-07.parquet
+2026-04-21 11:48:08,174 [INFO]   Deleted old parquet: proc_2025-02-08.parquet
+2026-04-21 11:48:08,176 [INFO]   Deleted old parquet: proc_2025-02-09.parquet
+2026-04-21 11:48:08,178 [INFO]   Deleted old parquet: proc_2025-02-10.parquet
+2026-04-21 11:48:08,181 [INFO]   Deleted old parquet: proc_2025-02-11.parquet
+2026-04-21 11:48:08,185 [INFO]   Deleted old parquet: proc_2025-02-12.parquet
+2026-04-21 11:48:08,188 [INFO]   Deleted old parquet: proc_2025-02-13.parquet
+2026-04-21 11:48:08,190 [INFO]   Deleted old parquet: proc_2025-02-14.parquet
+2026-04-21 11:48:08,192 [INFO]   Deleted old parquet: proc_2026-02-16.parquet
+2026-04-21 11:48:08,194 [INFO]   Deleted old parquet: proc_2026-02-17.parquet
+2026-04-21 11:48:08,195 [INFO]   Deleted old parquet: proc_2026-02-18.parquet
+2026-04-21 11:48:08,198 [INFO]   Deleted old parquet: proc_2026-02-19.parquet
+2026-04-21 11:48:08,201 [INFO]   Deleted old parquet: proc_2026-02-20.parquet
+2026-04-21 11:48:08,203 [INFO]   Deleted old parquet: proc_2026-02-21.parquet
+2026-04-21 11:48:08,205 [INFO]   Deleted old parquet: proc_2026-02-22.parquet
+2026-04-21 11:48:08,207 [INFO]   Deleted old parquet: proc_2026-02-23.parquet
+2026-04-21 11:48:08,210 [INFO]   Deleted old parquet: proc_2026-02-24.parquet
+2026-04-21 11:48:08,212 [INFO]   Deleted old parquet: proc_2026-02-25.parquet
+2026-04-21 11:48:08,215 [INFO]   Deleted old parquet: proc_2026-02-26.parquet
+2026-04-21 11:48:08,218 [INFO]   Deleted old parquet: proc_2026-02-27.parquet
+2026-04-21 11:48:08,220 [INFO]   Deleted old parquet: proc_2026-02-28.parquet
+2026-04-21 11:48:08,222 [INFO]   Deleted old parquet: proc_2026-03-01.parquet
+2026-04-21 11:48:08,224 [INFO]   Deleted old parquet: proc_2026-03-02.parquet
+2026-04-21 11:48:08,226 [INFO]   Deleted old parquet: proc_2026-03-03.parquet
+2026-04-21 11:48:08,228 [INFO]   Deleted old parquet: proc_2026-03-04.parquet
+2026-04-21 11:48:08,229 [INFO]   Deleted old parquet: proc_2026-03-05.parquet
+2026-04-21 11:48:08,231 [INFO]   Deleted old parquet: proc_2026-03-06.parquet
+2026-04-21 11:48:08,232 [INFO] Purged 45 parquet files older than 2026-03-07
+2026-04-21 11:48:08,236 [INFO] Building snapshot for 2026-04-12
+2026-04-21 11:48:08,236 [INFO]   MTD:   2026-04-01 -> 2026-04-12  (12d)
+2026-04-21 11:48:08,237 [INFO]   LM:    2026-03-01 -> 2026-03-31  (31d)
+2026-04-21 11:48:08,237 [INFO]   LMTD:  2026-03-01 -> 2026-03-12  (12d)
+2026-04-21 11:48:08,238 [INFO]   LYMTD: 2025-04-01 -> 2025-04-12  (12d)
+2026-04-21 11:48:08,238 [INFO]   LYSM:  2025-04-01 -> 2025-04-30
+2026-04-21 11:49:16,743 [INFO] Snapshot built — 4,854 HPCs
+2026-04-21 11:49:16,794 [INFO] Building farmer health for 2026-04-12
+2026-04-21 11:49:18,367 [INFO] Farmer health built — 4,669 HPCs for 2026-04-12
+2026-04-21 11:49:18,395 [INFO] Building farmer RFM for 2026-04-12
+2026-04-21 11:49:18,604 [INFO]   RFM thresholds: F=[12,12d] M=[2686.47,6651.52 Rs]
+2026-04-21 11:49:19,270 [INFO]   Dormant candidate count: 42,286
+2026-04-21 11:49:19,873 [INFO]   Current month active farmers: 50,905
+2026-04-21 11:49:21,475 [INFO]   Current month active farmers : 50,905
+2026-04-21 11:49:21,476 [INFO]   Dormant candidates (LM->now) : 42,286
+2026-04-21 11:49:21,476 [INFO]   Churned candidates (2m->now) : 9,433
+2026-04-21 11:49:25,410 [INFO]   RFM At Risk: 14,098
+2026-04-21 11:49:25,411 [INFO]   RFM Champion: 29,076
+2026-04-21 11:49:25,411 [INFO]   RFM Churned: 9,305
+2026-04-21 11:49:25,412 [INFO]   RFM Dormant: 42,286
+2026-04-21 11:49:25,412 [INFO]   RFM Loyal: 7,731
+2026-04-21 11:49:25,416 [INFO] === Nightly done in 231s ===
+2026-04-21 12:30:25,040 [INFO] Building snapshot for 2026-04-12
+2026-04-21 12:30:25,043 [INFO]   MTD:   2026-04-01 -> 2026-04-12  (12d)
+2026-04-21 12:30:25,044 [INFO]   LM:    2026-03-01 -> 2026-03-31  (31d)
+2026-04-21 12:30:25,044 [INFO]   LMTD:  2026-03-01 -> 2026-03-12  (12d)
+2026-04-21 12:30:25,044 [INFO]   LYMTD: 2025-04-01 -> 2025-04-12  (12d)
+2026-04-21 12:30:25,045 [INFO]   LYSM:  2025-04-01 -> 2025-04-30
+2026-04-21 12:34:19,691 [INFO] Snapshot built — 4,854 HPCs
+2026-04-21 12:34:19,941 [INFO] Building farmer health for 2026-04-12
+2026-04-21 12:34:23,669 [INFO] Farmer health built — 4,669 HPCs for 2026-04-12
+2026-04-21 12:34:23,700 [INFO] Building farmer RFM for 2026-04-12
+2026-04-21 12:34:24,259 [INFO]   RFM thresholds: F=[12,12d] M=[2686.47,6651.52 Rs]
+2026-04-21 12:34:26,277 [INFO]   Dormant candidate count: 42,286
+2026-04-21 12:34:26,342 [INFO]   Current month active farmers: 50,905
+2026-04-21 12:34:31,191 [INFO]   Current month active farmers : 50,905
+2026-04-21 12:34:31,192 [INFO]   Dormant candidates (LM->now) : 42,286
+2026-04-21 12:34:31,192 [INFO]   Churned candidates (2m->now) : 9,433
+2026-04-21 12:34:40,825 [INFO]   RFM At Risk: 14,098
+2026-04-21 12:34:40,826 [INFO]   RFM Champion: 29,076
+2026-04-21 12:34:40,826 [INFO]   RFM Churned: 9,305
+2026-04-21 12:34:40,827 [INFO]   RFM Dormant: 42,286
+2026-04-21 12:34:40,828 [INFO]   RFM Loyal: 7,731
