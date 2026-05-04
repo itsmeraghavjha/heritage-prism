@@ -272,93 +272,125 @@ def _fetch_batch(dates, sql_conn, progress_cb=None, batch_num=1, total_batches=1
     return results
 
 
-def fetch_new_data(progress_cb=None):
+def fetch_current_month(progress_cb=None):
     """
-    Fetch only dates that are genuinely new — i.e. newer than what is
-    already in proc_daily_hpc (SQLite), not based on parquet presence.
-
-    WHY NOT PARQUET-BASED:
-      Parquets are deleted after 45 days. Using parquet presence to decide
-      what to fetch means every cycle re-downloads 13+ months of old data.
-      SQLite is the permanent store — if a date is in SQLite, we skip it.
-
-    WHY BATCHED (not one-per-day, not all-at-once):
-      • One-per-day: 15 days = 15 SQL Server round trips. Slow on server.
-      • All-at-once: 200M rows would crash 8GB RAM.
-      • Batched (7 days): 15 days = 3 queries. Fast and memory-safe.
-
-    RESUME SAFETY:
-      If a fetch crashes halfway, re-running resumes from where it left off.
-      Each date's parquet is written immediately after its batch completes,
-      so already-written parquets are skipped on retry.
+    Fetches the target month in WEEKLY chunks (one SQL query per week).
+    Rule: today < 9th  → fetch last month (full)
+          today >= 9th → fetch current month up to today
+    Chunks: [1–7], [8–14], [15–21], [22–end]  — never more than 7 days per query.
     """
-    PARQUET_DIR.mkdir(parents=True, exist_ok=True)
+    today = date.today()
 
-    if progress_cb: progress_cb("fetch", 0, 1, "Connecting to SQL Server...")
+    # ── Day-9 guard ───────────────────────────────────────────────────────
+    if today.day < 9:
+        if today.month == 1:
+            target_year, target_month = today.year - 1, 12
+        else:
+            target_year, target_month = today.year, today.month - 1
+        month_start = date(target_year, target_month, 1)
+        month_end   = date(target_year, target_month,
+                           calendar.monthrange(target_year, target_month)[1])
+    else:
+        target_year, target_month = today.year, today.month
+        month_start = date(target_year, target_month, 1)
+        month_end   = today
+
+    # ── Build weekly chunks ───────────────────────────────────────────────
+    # e.g. May 1→20 becomes: [May1–7], [May8–14], [May15–20]
+    chunks = []
+    chunk_start = month_start
+    while chunk_start <= month_end:
+        chunk_end = min(chunk_start + timedelta(days=6), month_end)
+        chunks.append((chunk_start, chunk_end))
+        chunk_start = chunk_end + timedelta(days=1)
+
+    log.info(f"Target: {target_year}-{target_month:02d} | "
+             f"Range: {month_start} → {month_end} | "
+             f"Chunks: {len(chunks)} weekly batches")
+
+    # ── One connection, reused across all chunks ──────────────────────────
     try:
         sql_conn = pyodbc.connect(SQL_CONN_STR, timeout=30)
     except Exception as e:
         log.error(f"SQL Server connection failed: {e}")
         raise
 
+    CHUNK_SQL = """
+        SELECT
+            CAST([MCS Date] AS DATE)                                              AS proc_date,
+            CAST([Plant]    AS VARCHAR(20))                                       AS plant_code,
+            CAST([HPC Code] AS VARCHAR(20))                                       AS hpc_code,
+            CAST([Plant] AS VARCHAR(20)) + '_' + CAST([HPC Code] AS VARCHAR(20)) AS hpc_plant_key,
+            [HPC Name]                                                            AS hpc_name,
+            [Plant Name]                                                          AS plant_name,
+            [Area]                                                                AS area,
+            [Region Code]                                                         AS region_code,
+            [Region]                                                              AS region,
+            [Zone]                                                                AS zone,
+            [Route Code]                                                          AS route_code,
+            CAST([Shift]  AS VARCHAR(5))                                          AS shift,
+            CAST([Vendor] AS VARCHAR(20))                                         AS farmer_code,
+            CAST([Farmer Code] AS VARCHAR(10))                                    AS farmer_code_seq,
+            [Farmer Name]                                                         AS farmer_name,
+            CASE [Milk Type Desc]
+                WHEN 'CGM' THEN 'Cow'
+                WHEN 'BGM' THEN 'Buffalo'
+                ELSE ISNULL(CAST([Milk Type Desc] AS VARCHAR(20)), 'Unknown')
+            END                                                                   AS milk_type,
+            CAST([QTY(LTR)]        AS FLOAT)                                      AS qty_ltr,
+            CAST([QTY(KG)]         AS FLOAT)                                      AS qty_kg,
+            CAST([FAT]             AS FLOAT)                                      AS fat,
+            CAST([SNF]             AS FLOAT)                                      AS snf,
+            CAST([Fat_kg]          AS FLOAT)                                      AS fat_kg,
+            CAST([Snf_kg]          AS FLOAT)                                      AS snf_kg,
+            CAST([Base Price]      AS FLOAT)                                      AS base_price,
+            CAST([Mcc Incentive]   AS FLOAT)                                      AS mcc_incentive,
+            CAST([QTY Incentive]   AS FLOAT)                                      AS qty_incentive,
+            CAST([Bonus]           AS FLOAT)                                      AS bonus,
+            CAST([Dumping_Amt(QD)] AS FLOAT)                                      AS dumping_amt,
+            CAST([Net Price]       AS FLOAT)                                      AS net_price
+        FROM [HeritageIT].[P&I].[fact_procurement_transactions]
+        WHERE CAST([MCS Date] AS DATE) >= ?
+          AND CAST([MCS Date] AS DATE) <= ?
+    """
+
+    all_chunks = []
     try:
-        # ── Step 1: Find the latest date already in SQLite ────────────────────
-        # This is the key — we never re-fetch data that's already aggregated.
-        # Parquet presence does NOT matter here.
-        sqlite_conn = get_db()
-        latest_in_db = sqlite_conn.execute(
-            "SELECT MAX(DATE(proc_date)) FROM proc_daily_hpc"
-        ).fetchone()[0]
-        sqlite_conn.close()
-
-        if latest_in_db:
-            log.info(f"Latest date already in SQLite: {latest_in_db}")
-            log.info(f"Will only fetch dates strictly after {latest_in_db}")
-        else:
-            # First time — go back 13 months for YoY comparison data
-            latest_in_db = str(date.today() - timedelta(days=395))
-            log.info(f"No existing data — fetching from {latest_in_db}")
-
-        # ── Step 2: Ask SQL Server what dates it has after our cutoff ─────────
-        # Lightweight query — just dates, no row data
-        if progress_cb: progress_cb("fetch", 0, 1, "Checking available dates...")
-
-        available = pd.read_sql("""
-            SELECT DISTINCT CAST([MCS Date] AS DATE) AS proc_date
-            FROM [HeritageIT].[P&I].[fact_procurement_transactions]
-            WHERE CAST([MCS Date] AS DATE) > ?
-            ORDER BY proc_date
-        """, sql_conn, params=[latest_in_db])
-
-        if available.empty:
-            log.info("Already up to date — no new dates found in SQL Server")
-            if progress_cb: progress_cb("fetch", 1, 1, "Already up to date")
-            return []
-
-        all_new_dates = pd.to_datetime(available['proc_date']).dt.date.tolist()
-        log.info(f"SQL Server has {len(all_new_dates)} new date(s): "
-                 f"{all_new_dates[0]} -> {all_new_dates[-1]}")
-
-        # ── Step 3: Fetch ONE day at a time ──────────────────────────────────
-        results = []
-        for i, d in enumerate(all_new_dates):
+        for i, (start, end) in enumerate(chunks):
+            label = f"Week {i+1}/{len(chunks)}: {start} → {end}"
+            log.info(f"  Fetching {label}")
             if progress_cb:
-                progress_cb("fetch", i + 1, len(all_new_dates), f"Fetching {d}...")
-            
-            log.info(f"  Fetching day {i+1}/{len(all_new_dates)}: {d}")
-            
-            rows = _fetch_one_day(d, sql_conn)
-            if rows > 0:
-                log.info(f"    Saved {rows:,} rows")
-                results.append((d, rows))
+                progress_cb("fetch", i + 1, len(chunks), f"Fetching {label}...")
 
-        total_rows = sum(r for _, r in results)
-        log.info(f"Fetch complete — {len(results)} days, {total_rows:,} rows total")
-        return results
+            chunk_df = pd.read_sql(CHUNK_SQL, sql_conn,
+                                   params=[str(start), str(end)])
+
+            if chunk_df.empty:
+                log.warning(f"  {label}: 0 rows returned — skipping")
+                continue
+
+            log.info(f"  {label}: {len(chunk_df):,} rows")
+            all_chunks.append(chunk_df)
 
     finally:
-        sql_conn.close()
+        sql_conn.close()   # always close, even if a chunk fails
 
+    if not all_chunks:
+        log.warning("fetch_current_month: all chunks returned empty")
+        return None, target_year, target_month
+
+    # Combine all weekly chunks into one DataFrame
+    df = pd.concat(all_chunks, ignore_index=True)
+    df['proc_date'] = pd.to_datetime(df['proc_date']).dt.date
+
+    log.info(f"Total fetched: {len(df):,} rows across {len(all_chunks)} chunks "
+             f"for {target_year}-{target_month:02d}")
+
+    if progress_cb:
+        progress_cb("fetch", len(chunks), len(chunks),
+                    f"Done — {len(df):,} rows fetched")
+
+    return df, target_year, target_month
 
 # ── STEP 2: PURGE OLD PARQUETS ────────────────────────────────────────────────
 
@@ -394,22 +426,11 @@ def purge_old_parquets(reference_date=None, progress_cb=None):
 # Each month ≈ 150K rows in DuckDB — well within limits.
 # If a month fails, you only rerun that month (not the whole year).
 
-def build_month(yr, mth, conn=None, duck=None, progress_cb=None):
-    """
-    Aggregate all parquet files for (yr, mth) and write to all 4 summary tables.
-    Replaces existing rows for that month.
-    """
-    prefix = f"proc_{yr}-{mth:02d}-"
-    files  = sorted(PARQUET_DIR.glob(f"{prefix}*.parquet"))
-    if not files:
-        log.warning(f"  No parquet files for {yr}-{mth:02d} — skipping")
-        return False
+def build_month(yr, mth, conn=None, duck=None, df=None, progress_cb=None):
+    #                                ↑ NEW optional param
 
     ym_str     = f"{yr}-{mth:02d}"
-    file_list  = ", ".join(f"'{f}'" for f in files)
     days_total = calendar.monthrange(yr, mth)[1]
-
-    log.info(f"  {ym_str}: {len(files)} files, {days_total} days in month")
 
     own_duck = duck is None
     own_conn = conn is None
@@ -417,9 +438,22 @@ def build_month(yr, mth, conn=None, duck=None, progress_cb=None):
     if own_conn: conn = get_db()
 
     try:
-        duck.execute(
-            f"CREATE OR REPLACE VIEW month_raw AS SELECT * FROM read_parquet([{file_list}])"
-        )
+        if df is not None:
+            # ── Fast path: DataFrame in RAM, no parquet needed ────────────
+            log.info(f"  {ym_str}: {len(df):,} rows from DataFrame (no parquet)")
+            duck.register("month_raw", df)
+        else:
+            # ── Backfill path: read from parquet files on disk ────────────
+            prefix = f"proc_{yr}-{mth:02d}-"
+            files  = sorted(PARQUET_DIR.glob(f"{prefix}*.parquet"))
+            if not files:
+                log.warning(f"  No parquet files for {ym_str} — skipping")
+                return False
+            file_list = ", ".join(f"'{f}'" for f in files)
+            log.info(f"  {ym_str}: {len(files)} parquet files")
+            duck.execute(
+                f"CREATE OR REPLACE VIEW month_raw AS SELECT * FROM read_parquet([{file_list}])"
+            )
 
         # ── proc_daily_hpc ────────────────────────────────────────────────
         # Grain: hpc_plant_key + proc_date + shift
@@ -607,6 +641,7 @@ def build_month(yr, mth, conn=None, duck=None, progress_cb=None):
     finally:
         if own_duck: duck.close()
         if own_conn: conn.close()
+
 
 
 def build_all_summaries(from_ym=None, progress_cb=None):
@@ -1532,10 +1567,6 @@ def _ensure_default_admin(conn):
 # ── ORCHESTRATORS ─────────────────────────────────────────────────────────────
 
 def run_nightly():
-    """
-    Standard nightly job: fetch yesterday -> rebuild current month -> retention -> snapshot.
-    This runs every night. Total time ~6 minutes.
-    """
     import time
     t0 = time.time()
     log.info("=== Nightly pipeline starting ===")
@@ -1545,24 +1576,45 @@ def run_nightly():
     _ensure_indexes(conn)
     conn.close()
 
-    fetched = fetch_new_data()
-    if not fetched:
-        log.info("Nothing new to fetch — rebuilding snapshot only")
+    # ── Step 1: Fetch target month in weekly chunks ───────────────────────
+    df, target_yr, target_mth = fetch_current_month()
+
+    if df is None or df.empty:
+        log.info("Nothing returned — rebuilding snapshot only")
         build_snapshot()
         return
 
-    affected = sorted(set((d.year, d.month) for d, _ in fetched))
-    conn = get_db()
-    duck = get_duck()
-    try:
-        for yr, mth in affected:
-            build_month(yr, mth, conn=conn, duck=duck)
-    finally:
-        duck.close()
-        conn.close()
+    ym_str = f"{target_yr}-{target_mth:02d}"
 
+    # ── Step 2: Wipe that month from SQLite ───────────────────────────────
+    conn = get_db()
+    conn.execute(
+        "DELETE FROM proc_daily_hpc "
+        "WHERE strftime('%Y-%m', DATE(proc_date)) = ?", (ym_str,)
+    )
+    conn.execute(
+        "DELETE FROM proc_monthly_hpc WHERE yr=? AND mth=?",
+        (target_yr, target_mth)
+    )
+    conn.execute(
+        "DELETE FROM proc_monthly_farmer WHERE yr=? AND mth=?",
+        (target_yr, target_mth)
+    )
+    conn.execute(
+        "DELETE FROM proc_quality_incidents "
+        "WHERE strftime('%Y-%m', DATE(proc_date)) = ?", (ym_str,)
+    )
+    conn.commit()
+    log.info(f"Cleared {ym_str} from all SQLite tables")
+
+    # ── Step 3: Rebuild summaries from DataFrame (no parquet) ────────────
+    duck = get_duck()
+    build_month(target_yr, target_mth, conn=conn, duck=duck, df=df)
+    duck.close()
+    conn.close()
+
+    # ── Step 4: Retention + snapshot ──────────────────────────────────────
     apply_retention()
-    purge_old_parquets()
     build_snapshot()
 
     elapsed = int(time.time() - t0)
@@ -1570,19 +1622,15 @@ def run_nightly():
 
     conn = get_db()
     conn.execute(
-        "INSERT INTO pipeline_log(trigger,stage,status,duration_sec,message) VALUES(?,?,?,?,?)",
-        ("nightly", "full", "success", elapsed, f"Fetched {len(fetched)} days")
+        "INSERT INTO pipeline_log(trigger,stage,status,duration_sec,message) "
+        "VALUES(?,?,?,?,?)",
+        ("nightly", "full", "success", elapsed,
+         f"Fetched {df['proc_date'].nunique()} days, {len(df):,} rows for {ym_str}")
     )
     conn.commit()
     conn.close()
 
-
 def run_full_fetch(progress_cb=None):
-    """
-    Admin-triggered full fetch.
-    Fetches all missing data -> rebuilds affected months -> retention -> purge -> snapshot.
-    Runs in a background thread. Returns result dict.
-    """
     import time
     t0 = time.time()
     log.info("=== Admin full fetch starting ===")
@@ -1592,38 +1640,51 @@ def run_full_fetch(progress_cb=None):
     _ensure_indexes(conn)
     conn.close()
 
-    # 1. Fetch
-    fetched = fetch_new_data(progress_cb=progress_cb)
-    if not fetched:
-        msg = "Already up to date — no new data in SQL Server"
+    # ── Step 1: Fetch target month in one shot ────────────────────────────
+    df, target_yr, target_mth = fetch_current_month(progress_cb=progress_cb)
+
+    if df is None or df.empty:
+        msg = "No data returned from SQL Server"
         if progress_cb: progress_cb("done", 1, 1, msg)
         return {"status": "up_to_date", "fetched_days": 0, "fetched_rows": 0}
 
-    total_rows = sum(r for _, r in fetched)
+    ym_str = f"{target_yr}-{target_mth:02d}"
 
-    # 2. Rebuild affected months
-    affected = sorted(set((d.year, d.month) for d, _ in fetched))
-    if progress_cb: progress_cb("build", 0, len(affected),
-                                f"Rebuilding {len(affected)} month(s)...")
+    # ── Step 2: Delete that month from SQLite (fresh rewrite) ────────────
     conn = get_db()
+    if progress_cb:
+        progress_cb("build", 0, 1, f"Clearing {ym_str} from SQLite...")
+
+    conn.execute(
+        "DELETE FROM proc_daily_hpc "
+        "WHERE strftime('%Y-%m', DATE(proc_date)) = ?", (ym_str,)
+    )
+    conn.execute(
+        "DELETE FROM proc_monthly_hpc WHERE yr=? AND mth=?", (target_yr, target_mth)
+    )
+    conn.execute(
+        "DELETE FROM proc_monthly_farmer WHERE yr=? AND mth=?", (target_yr, target_mth)
+    )
+    conn.execute(
+        "DELETE FROM proc_quality_incidents "
+        "WHERE strftime('%Y-%m', DATE(proc_date)) = ?", (ym_str,)
+    )
+    conn.commit()
+    log.info(f"Cleared {ym_str} from all SQLite tables")
+
+    # ── Step 3: Rebuild from DataFrame (no parquet written) ───────────────
+    if progress_cb:
+        progress_cb("build", 1, 1, f"Building {ym_str} summaries...")
+
     duck = get_duck()
-    try:
-        for i, (yr, mth) in enumerate(affected):
-            if progress_cb:
-                progress_cb("build", i + 1, len(affected), f"Building {yr}-{mth:02d}...")
-            build_month(yr, mth, conn=conn, duck=duck)
-        _ensure_indexes(conn)
-    finally:
-        duck.close()
-        conn.close()
+    build_month(target_yr, target_mth,
+                conn=conn, duck=duck,
+                df=df)          # ← skips parquet entirely
+    duck.close()
+    conn.close()
 
-    # 3. Retention
+    # ── Step 4: Retention + snapshot (unchanged) ──────────────────────────
     apply_retention(progress_cb=progress_cb)
-
-    # 4. Purge old parquets
-    purge_old_parquets(progress_cb=progress_cb)
-
-    # 5. Snapshot
     build_snapshot(progress_cb=progress_cb)
 
     elapsed = int(time.time() - t0)
@@ -1633,19 +1694,18 @@ def run_full_fetch(progress_cb=None):
     conn.execute(
         "INSERT INTO pipeline_log(trigger,stage,status,duration_sec,rows_processed,message) "
         "VALUES(?,?,?,?,?,?)",
-        ("admin_fetch", "full", "success", elapsed, total_rows,
-         f"Fetched {len(fetched)} days, {total_rows:,} rows")
+        ("admin_fetch", "full", "success", elapsed, len(df),
+         f"Fetched {df['proc_date'].nunique()} days, {len(df):,} rows for {ym_str}")
     )
     conn.commit()
     conn.close()
 
     return {
         "status":       "success",
-        "fetched_days": len(fetched),
-        "fetched_rows": total_rows,
+        "fetched_days": df['proc_date'].nunique(),
+        "fetched_rows": len(df),
         "seconds":      elapsed,
     }
-
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":

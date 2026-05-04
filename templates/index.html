@@ -776,6 +776,7 @@ let TARGETS = {
   fat               : 3.5,
   snf               : 8.0,
   costPerKg         : 900,
+  costPerSolidsKg   : 280,
   attrition         : 8,
 };
 
@@ -1853,6 +1854,15 @@ async function renderScorecard() {
           
       // 3. Output the true weighted attrition over active HPCs only
       attrition: totPrev > 0 ? (totChurned / totPrev) * 100 : 0,
+
+      // Cost per (Fat + SNF) KG — same concept as costPerKg but total solids
+      costPerSolidsKg: (function() {
+        const totFat  = sF(mList, 'total_fat_kg');
+        const totSnf  = sF(mList, 'total_snf_kg');
+        const totPay  = sF(mList, 'total_net_price');
+        const solids  = totFat + totSnf;
+        return solids > 0 ? totPay / solids : 0;
+      })(),
     };
   }
 
@@ -1883,13 +1893,14 @@ async function renderScorecard() {
 
   /* ── metric definitions ── */
   const METRIC_DEFS = [
-    { key: 'farmerProductivity', name: 'Farmer Productivity', unit: 'L/Farmer', icon: '👨‍🌾', higherIsBetter: true  },
+    { key: 'farmerProductivity', name: 'milk Pourage/Farmer', unit: 'L/Farmer', icon: '👨‍🌾', higherIsBetter: true  },
     { key: 'hpcProductivity',    name: 'HPC Productivity',    unit: 'L/HPC',    icon: '🏭',  higherIsBetter: true  },
     { key: 'farmerPerHPC',       name: 'Farmers per HPC',     unit: 'Count',    icon: '📊',  higherIsBetter: true  },
     { key: 'attrition',          name: 'Farmer Attrition',     unit: '%',        icon: '📉',  higherIsBetter: false },
     { key: 'fat',                name: 'Average FAT',          unit: '%',        icon: '🧪',  higherIsBetter: true  },
     { key: 'snf',                name: 'Average SNF',          unit: '%',        icon: '⚗️',  higherIsBetter: true  },
     { key: 'costPerKg',          name: 'Cost per Fat Kg',      unit: '₹/Kg',    icon: '💰',  higherIsBetter: false },
+    { key: 'costPerSolidsKg',    name: 'Cost per Solids Kg',   unit: '₹/Kg',    icon: '🔥',  higherIsBetter: false },  // ← NEW
   ];
 
   /* ── mapping: metric key → history API field name ── */
@@ -1901,6 +1912,7 @@ async function renderScorecard() {
     fat               : 'fat',
     snf               : 'snf',
     costPerKg         : 'cost_per_fat_kg',
+    costPerSolidsKg   : 'cost_per_solids_kg',   // ← NEW
   };
 
   /* ── show column flags ── */
@@ -1925,6 +1937,10 @@ async function renderScorecard() {
       const data = await res.json();
       lmHist = data.lm || {};
       lyHist = data.ly || {};
+      // Override frontend-computed attrition with level-aware backend value
+      if (data.current_attrition != null) {
+        current.attrition = data.current_attrition;
+      }
     }
   } catch (e) {
     console.warn('Scorecard history fetch failed:', e);

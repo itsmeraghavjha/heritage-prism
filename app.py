@@ -66,7 +66,7 @@ _cache_building = False
 
 METRIC_ORDER = [
     'farmerProductivity', 'hpcProductivity', 'farmerPerHPC',
-    'fat', 'snf', 'costPerKg', 'attrition',
+    'fat', 'snf', 'costPerKg', 'costPerSolidsKg', 'attrition',
 ]
 
 
@@ -163,8 +163,6 @@ def  _build_cache():
         """)
 
         # ── monthly_hpc ───────────────────────────────────────────────────
-        # ── monthly_hpc ───────────────────────────────────────────────────
-        # ── monthly_hpc ───────────────────────────────────────────────────
         monthly_hpc = q(f"""
     SELECT mh.hpc_plant_key, mh.milk_type, 
            s.zone, s.region, s.plant_code,
@@ -179,6 +177,7 @@ def  _build_cache():
            ROUND(mh.incentive_pct,2)       AS incentive_pct,
            ROUND(mh.avg_cost_per_fat_kg,2) AS avg_cost_per_fat_kg,
            ROUND(mh.total_fat_kg,3)        AS total_fat_kg,  
+            ROUND(mh.total_snf_kg,3)        AS total_snf_kg,
            ROUND(mh.avg_rate_per_ltr,2)    AS avg_rate_per_ltr,
            mh.morning_ltr, mh.evening_ltr
     FROM proc_monthly_hpc mh
@@ -667,6 +666,7 @@ def _ensure_targets_table(conn):
                 ('fat',                3.5,    '%',        'Minimum average FAT percentage'),
                 ('snf',                8.0,    '%',        'Minimum average SNF percentage'),
                 ('costPerKg',          900.0,  '₹/Kg',    'Maximum cost per fat kilogram'),
+                ('costPerSolidsKg',    280.0,  '₹/Kg',    'Maximum cost per combined fat+snf kilogram'),
                 ('attrition',          8.0,    '%',        'Maximum acceptable farmer attrition rate'),
             ]
             conn.executemany("""
@@ -1504,6 +1504,7 @@ def scorecard_history():
         hpc_agg = conn.execute(f"""
             SELECT SUM(mh.total_qty_ltr) as total_ltr,
                    SUM(mh.total_fat_kg) as total_fat_kg,
+                    SUM(mh.total_snf_kg) as total_snf_kg,
                    SUM(mh.total_net_price) as total_net_price,
                    SUM(mh.avg_fat * mh.total_qty_ltr) / NULLIF(SUM(mh.total_qty_ltr), 0) as fat,
                    SUM(mh.avg_snf * mh.total_qty_ltr) / NULLIF(SUM(mh.total_qty_ltr), 0) as snf,
@@ -1538,14 +1539,101 @@ def scorecard_history():
             "farmers_per_hpc"    : round(farmers / hpcs, 1) if hpcs > 0 else None,
             "fat"                : round(hpc_agg["fat"], 3) if hpc_agg["fat"] else None,
             "snf"                : round(hpc_agg["snf"], 3) if hpc_agg["snf"] else None,
-            "cost_per_fat_kg"    : round(hpc_agg["total_net_price"] / hpc_agg["total_fat_kg"], 2) if hpc_agg["total_fat_kg"] else None
+            "cost_per_fat_kg"    : round(hpc_agg["total_net_price"] / hpc_agg["total_fat_kg"], 2) if hpc_agg["total_fat_kg"] else None,
+            "cost_per_solids_kg" : round(
+                               hpc_agg["total_net_price"] /
+                               (hpc_agg["total_fat_kg"] + hpc_agg["total_snf_kg"]), 2
+                           ) if (hpc_agg["total_fat_kg"] and hpc_agg["total_snf_kg"]) else None,
         }
 
     lm_data = fetch_metrics(lm_yr, lm_mth)
     ly_data = fetch_metrics(ly_yr, ly_mth)
-    conn.close()
+    def fetch_level_attrition(curr_yr, curr_mth, prev_yr, prev_mth):
+        """
+        Level-aware attrition: farmer is churned only if they left the
+        ENTIRE scope (company/zone/region/plant).
+        Switching HPCs within the same zone/region is NOT counted.
 
-    return jsonify({"lm": lm_data, "ly": ly_data})
+        Uses proc_monthly_farmer directly — it has zone/region/plant_code
+        columns so no snapshot join needed.
+        """
+        # Build scope clauses WITHOUT table alias (direct on proc_monthly_farmer)
+        direct_clauses, direct_params = [], []
+        if f.get("zone"):
+            direct_clauses.append("zone = ?")
+            direct_params.append(f["zone"])
+        if f.get("region"):
+            direct_clauses.append("region = ?")
+            direct_params.append(f["region"])
+        if f.get("plant_code"):
+            direct_clauses.append("CAST(plant_code AS TEXT) = ?")
+            direct_params.append(str(f["plant_code"]))
+
+        # Milk type filter
+        milk_direct, milk_p = "", []
+        if milk_type and milk_type != 'all':
+            milk_direct = "AND milk_type = ?"
+            milk_p = [milk_type]
+
+        scope_and = ("AND " + " AND ".join(direct_clauses)) if direct_clauses else ""
+
+        row = conn.execute(f"""
+            WITH
+            curr AS (
+                SELECT DISTINCT farmer_code
+                FROM proc_monthly_farmer
+                WHERE yr = ? AND mth = ?
+                  AND delivery_days > 0
+                  AND farmer_code_seq != '9999'
+                  {scope_and} {milk_direct}
+            ),
+            prev AS (
+                SELECT DISTINCT farmer_code
+                FROM proc_monthly_farmer
+                WHERE yr = ? AND mth = ?
+                  AND delivery_days > 0
+                  AND farmer_code_seq != '9999'
+                  {scope_and} {milk_direct}
+            )
+            SELECT
+                COUNT(*) AS prev_total,
+                SUM(CASE WHEN farmer_code NOT IN (
+                    SELECT farmer_code FROM curr
+                ) THEN 1 ELSE 0 END) AS churned
+            FROM prev
+        """,
+        # curr params
+        [curr_yr, curr_mth] + direct_params + milk_p +
+        # prev params
+        [prev_yr, prev_mth] + direct_params + milk_p
+        ).fetchone()
+
+        prev_total = row['prev_total'] or 0
+        churned    = row['churned']    or 0
+        return round(churned / prev_total * 100, 2) if prev_total > 0 else 0
+
+    # ── Previous month for LM attrition ──────────────────────────────────────
+    lm_prev_yr  = lm_yr  if lm_mth  > 1 else lm_yr  - 1
+    lm_prev_mth = lm_mth - 1 if lm_mth > 1 else 12
+
+    # ── Previous month for LY attrition ──────────────────────────────────────
+    ly_prev_yr  = ly_yr  if ly_mth  > 1 else ly_yr  - 1
+    ly_prev_mth = ly_mth - 1 if ly_mth > 1 else 12
+
+    # ── Compute all three attrition values at the correct scope level ─────────
+    current_attrition = fetch_level_attrition(curr_yr, curr_mth, lm_yr,      lm_mth)
+    lm_attrition      = fetch_level_attrition(lm_yr,  lm_mth,   lm_prev_yr,  lm_prev_mth)
+    ly_attrition      = fetch_level_attrition(ly_yr,  ly_mth,   ly_prev_yr,  ly_prev_mth)
+
+    lm_data['attrition'] = lm_attrition
+    ly_data['attrition'] = ly_attrition
+
+    conn.close()
+    return jsonify({
+        "lm":                lm_data,
+        "ly":                ly_data,
+        "current_attrition": current_attrition,   # ← level-aware current value
+    })
 
 
 # ── ADMIN: TARGET MANAGEMENT ──────────────────────────────────────────────────
