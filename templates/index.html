@@ -329,6 +329,54 @@ table.dt tbody tr.tr-green  td:first-child { border-left: 3px solid var(--green)
 @media(max-width: 1100px) { #ovKpis { grid-template-columns: repeat(2, 1fr) !important; } }
 @media(max-width: 650px) { #ovKpis { grid-template-columns: 1fr 1fr !important; } }
 
+
+/* REPORTS TAB */
+.report-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all .2s;
+  text-align: left;
+  min-width: 180px;
+  box-shadow: var(--shadow);
+}
+.report-pill:hover {
+  border-color: var(--brand-bdr);
+  background: var(--brand-lt);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.report-pill.active {
+  background: var(--brand);
+  border-color: var(--brand);
+  box-shadow: 0 4px 14px rgba(45,168,70,.3);
+}
+.report-pill.active .rp-name,
+.report-pill.active .rp-sub {
+  color: #fff;
+}
+.rp-name {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.rp-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .3; }
+}
+
 </style>
 </head>
 <body>
@@ -413,6 +461,7 @@ table.dt tbody tr.tr-green  td:first-child { border-left: 3px solid var(--green)
     <button class="tab" onclick="switchTab('overview')"><span class="tab-icon">📊</span> Overview</button>
     <button class="tab" onclick="switchTab('hpc')"><span class="tab-icon">🏭</span> HPC Drilldown</button>
     <button class="tab" onclick="switchTab('farmers')"><span class="tab-icon">👨‍🌾</span> Farmer Analytics</button>
+    <button class="tab" onclick="switchTab('reports')"><span class="tab-icon">📋</span> Reports</button>
     <!-- <button class="tab" id="tabQuality" onclick="switchTab('quality')"><span class="tab-icon">🧪</span> Quality &amp; Cost</button> -->
   </div>
 </div>
@@ -610,6 +659,64 @@ table.dt tbody tr.tr-green  td:first-child { border-left: 3px solid var(--green)
       </table>
     </div>
     <div id="pagQuality"></div> </div>
+</div>
+
+<div class="page" id="pg-reports">
+
+  <!-- Report Selector Pills -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+  <div>
+    <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--ink);margin-bottom:4px">Analytics Reports</div>
+    <div style="font-size:13px;color:var(--muted)">Interactive Power BI dashboards — live data from Heritage systems</div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap" id="reportPills">
+    <!-- dynamically generated from REPORTS array -->
+  </div>
+</div>
+  <!-- Report Frame Card -->
+  <div class="card" style="overflow:hidden">
+    <div class="card-head" style="background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px">
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="width:7px;height:7px;border-radius:50%;background:#2DA846;animation:pulse 2s infinite"></div>
+    <span style="font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--ink)" id="reportFrameTitle">Procurement Overview</span>
+    <span style="font-size:11px;color:var(--muted);padding:2px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;font-family:var(--font-head)">Power BI</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span style="font-size:10px;color:var(--muted);font-family:var(--font-head);font-weight:600;letter-spacing:.05em">LIVE</span>
+    <a id="reportOpenLink" href="#" target="_blank"
+       style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:var(--brand);border-radius:6px;color:#fff;font-family:var(--font-head);font-size:11px;font-weight:700;text-decoration:none;transition:opacity .15s"
+       onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      ↗ Full Screen
+    </a>
+  </div>
+</div>
+
+    <!-- Loading Shimmer -->
+    <div id="reportLoading" style="position:relative;background:var(--surface2);height:720px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+      <div style="width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--brand);border-radius:50%;animation:sp .8s linear infinite"></div>
+      <div style="font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--muted)">Loading Power BI Report…</div>
+      <div style="font-size:12px;color:var(--muted-lt)">This may take a few seconds</div>
+    </div>
+
+    <iframe
+      id="reportFrame"
+      style="width:100%;height:720px;border:none;display:none"
+      allowfullscreen
+      title="Power BI Report">
+    </iframe>
+  </div>
+
+  <!-- Info Footer -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding:14px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);flex-wrap:wrap;gap:10px">
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)">
+      <span style="font-size:14px">ℹ️</span>
+      Reports are embedded from Power BI. Sign in with your Heritage Microsoft account if prompted.
+    </div>
+    <div style="font-size:11px;color:var(--muted-lt);font-family:var(--font-head);font-weight:600">
+      Heritage Foods Ltd. · Procurement Intelligence
+    </div>
+  </div>
+
 </div>
 
 </main>
@@ -2118,6 +2225,85 @@ async function boot(){
     const retryBtn=document.createElement('button'); retryBtn.textContent='↺ Retry'; retryBtn.style.cssText='margin-top:20px;padding:8px 24px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:8px;color:#fff;font-family:var(--font-head);font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.05em'; retryBtn.onclick=()=>location.reload(); document.querySelector('.boot-inner').appendChild(retryBtn); console.error('Boot failed:', e);
   }
 }
+
+
+
+function renderReportPills() {
+  const container = document.getElementById('reportPills');
+  container.innerHTML = REPORTS.map((r, i) => `
+    <button class="report-pill ${i === 0 ? 'active' : ''}" onclick="switchReport(${i})" id="rpill${i}">
+      <span style="font-size:16px">${r.icon}</span>
+      <div>
+        <div class="rp-name">${r.name}</div>
+        <div class="rp-sub">${r.sub}</div>
+      </div>
+    </button>
+  `).join('');
+}
+
+// renderReportPills(); 
+
+/* ── REPORTS ── */
+const REPORTS = [
+  {
+    name: 'Milk Procurement Overview & Trends',
+    sub:  'Volume & Quality Trends',
+    icon: '📊',
+    url:  'https://app.powerbi.com/view?r=eyJrIjoiNTdkNzQ5YTEtYjVkMy00MWQ0LWIyYWYtZjRlNWQ5OTQ4NzhhIiwidCI6IjdmZjNjMWE5LTljYTAtNDBlNC1iMjdmLWRmZDU1M2M4OGZkZCJ9',
+  },
+  {
+    name: 'Capacity Utilization',
+    sub:  'Capacity Vs Utilization',
+    icon: '🏭',
+    url:  'https://app.powerbi.com/view?r=eyJrIjoiNzJlZmNmN2EtNzQyMy00MWMxLWJmYTktOWVhMmY1ZmU3MWRmIiwidCI6IjdmZjNjMWE5LTljYTAtNDBlNC1iMjdmLWRmZDU1M2M4OGZkZCJ9'
+  },
+];
+
+let _activeReport = 0;
+
+
+function switchReport(idx) {
+  // Generate pills if not already done
+  if (!document.getElementById('rpill0')) {
+    document.getElementById('reportPills').innerHTML = REPORTS.map((r, i) => `
+      <button class="report-pill ${i === 0 ? 'active' : ''}" onclick="switchReport(${i})" id="rpill${i}">
+        <span style="font-size:16px">${r.icon}</span>
+        <div>
+          <div class="rp-name">${r.name}</div>
+          <div class="rp-sub">${r.sub}</div>
+        </div>
+      </button>
+    `).join('');
+  }
+
+  _activeReport = idx;
+  const r = REPORTS[idx];
+  document.querySelectorAll('.report-pill').forEach((p, i) => p.classList.toggle('active', i === idx));
+  document.getElementById('reportFrameTitle').textContent = r.name;
+  document.getElementById('reportOpenLink').href = r.url;
+
+  const frame = document.getElementById('reportFrame');
+  const loading = document.getElementById('reportLoading');
+  frame.style.display = 'none';
+  loading.style.display = 'flex';
+  frame.src = '';
+  frame.onload = () => { loading.style.display = 'none'; frame.style.display = 'block'; };
+  setTimeout(() => { frame.src = r.url; }, 150);
+}
+// Auto-load when switching to the reports tab
+const _origSwitchTab = switchTab;
+// Patch switchTab to trigger report load on first visit
+let _reportsLoaded = false;
+const _baseSwitchTab = switchTab;
+switchTab = function(n) {
+  _baseSwitchTab(n);
+  if (n === 'reports' && !_reportsLoaded) {
+    _reportsLoaded = true;
+    switchReport(0);
+  }
+};
+
+
 boot();
 </script>
 </body>
