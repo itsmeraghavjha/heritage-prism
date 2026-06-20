@@ -4788,3 +4788,747 @@ sqlite3.OperationalError: no such table: proc_period_snapshot
 2026-06-15 11:07:11,982 [INFO] 127.0.0.1 - - [15/Jun/2026 11:07:11] "GET /api/bootstrap HTTP/1.1" 200 -
 2026-06-15 11:07:12,224 [INFO] 127.0.0.1 - - [15/Jun/2026 11:07:12] "GET /api/targets HTTP/1.1" 200 -
 2026-06-15 11:07:15,585 [INFO] 127.0.0.1 - - [15/Jun/2026 11:07:15] "GET /api/scorecard/history HTTP/1.1" 200 -
+2026-06-17 15:22:52,593 [INFO] Building bootstrap cache...
+2026-06-17 15:22:53,964 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8091
+ * Running on http://10.10.0.59:8091
+2026-06-17 15:22:53,964 [INFO] [33mPress CTRL+C to quit[0m
+2026-06-17 15:22:53,969 [INFO]  * Restarting with stat
+2026-06-17 15:22:55,473 [INFO] Building bootstrap cache...
+2026-06-17 15:22:55,500 [WARNING]  * Debugger is active!
+2026-06-17 15:22:55,525 [INFO]  * Debugger PIN: 964-126-480
+2026-06-17 15:22:57,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:22:57] "[32mGET / HTTP/1.1[0m" 302 -
+2026-06-17 15:22:57,501 [INFO] 127.0.0.1 - - [17/Jun/2026 15:22:57] "GET /login HTTP/1.1" 200 -
+2026-06-17 15:23:06,047 [INFO] Login: admin@heritagefoods.in (admin)
+2026-06-17 15:23:06,048 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:06] "POST /login HTTP/1.1" 200 -
+2026-06-17 15:23:06,113 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:06] "GET /admin HTTP/1.1" 200 -
+2026-06-17 15:23:06,348 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:06] "GET /api/admin/users HTTP/1.1" 200 -
+2026-06-17 15:23:07,074 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:07] "GET /api/admin/scope-options HTTP/1.1" 200 -
+2026-06-17 15:23:10,185 [INFO] === Admin full fetch starting ===
+2026-06-17 15:23:10,186 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:10] "POST /api/admin/fetch HTTP/1.1" 200 -
+2026-06-17 15:23:10,190 [INFO] Target: 2026-06 | Range: 2026-06-01 → 2026-06-17 | Chunks: 3 weekly batches
+2026-06-17 15:23:10,367 [INFO]   Fetching Week 1/3: 2026-06-01 → 2026-06-07
+2026-06-17 15:23:11,204 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:12,205 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:13,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:14,202 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:15,205 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:16,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:17,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:17] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:18,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:18] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:19,476 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:19] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:20,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:20] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:21,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:21] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:22,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:22] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:23,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:23] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:24,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:25,447 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:26,443 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:27,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:28,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:29,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:30,450 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:31,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:32,453 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:33,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:34,443 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:35,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:36,447 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:37,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:38,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:40,661 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:40,673 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:41,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:42,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:43,430 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:44,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:45,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:46,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:47,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:48,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:49,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:50,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:51,455 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:52,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:53,443 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:53] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:54,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:54] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:55,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:55] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:56,448 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:56] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:57,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:58,456 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:23:59,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:23:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:00,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:00] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:01,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:01] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:02,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:03,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:03] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:04,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:04] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:05,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:05] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:06,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:06] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:07,446 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:08,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:08] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:09,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:09] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:10,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:10] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:11,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:12,448 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:13,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:14,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:15,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:18,286 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:18] "GET /api/admin/data-status HTTP/1.1" 200 -
+2026-06-17 15:24:30,362 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:31,316 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:32,307 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:33,205 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:34,226 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:35,214 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:36,219 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:37,224 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:38,225 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:39,209 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:40,222 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:41,220 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:42,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:43,224 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:44,218 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:45,214 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:46,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:47,220 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:48,218 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:49,214 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:50,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:51,221 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:52,222 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:53,215 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:53] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:54,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:54] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:55,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:55] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:56,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:56] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:57,205 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:58,203 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:24:59,202 [INFO] 127.0.0.1 - - [17/Jun/2026 15:24:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:00,203 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:00] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:02,482 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:02,630 [INFO] Cache built in 127.2s — 40068 KB, snap=2026-06-10, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-17 15:25:02,713 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:02,984 [INFO] Cache built in 130.4s — 40068 KB, snap=2026-06-10, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-17 15:25:03,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:03] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:04,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:04] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:05,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:05] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:06,446 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:06] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:07,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:08,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:08] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:09,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:09] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:10,444 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:10] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:11,450 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:12,446 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:13,452 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:14,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:15,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:16,450 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:17,454 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:17] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:18,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:18] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:19,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:19] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:20,455 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:20] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:21,430 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:21] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:22,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:22] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:23,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:23] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:24,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:25,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:26,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:27,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:28,448 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:29,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:30,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:31,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:32,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:33,450 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:34,213 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:35,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:36,222 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:37,214 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:38,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:39,226 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:40,218 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:41,219 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:42,228 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:43,213 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:44,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:45,220 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:46,227 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:47,207 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:48,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:49,221 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:50,240 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:51,461 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:52,450 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:53,444 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:53] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:54,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:54] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:55,444 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:55] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:56,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:56] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:57,446 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:58,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:25:59,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:25:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:00,443 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:00] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:01,444 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:01] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:02,509 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:03,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:03] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:04,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:04] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:05,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:05] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:06,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:06] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:07,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:08,443 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:08] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:09,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:09] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:10,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:10] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:11,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:12,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:13,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:14,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:15,446 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:16,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:17,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:17] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:18,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:18] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:19,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:19] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:20,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:20] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:21,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:21] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:22,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:22] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:23,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:23] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:24,451 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:25,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:26,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:27,428 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:28,444 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:29,450 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:30,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:31,453 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:32,451 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:33,451 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:34,448 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:35,457 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:36,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:37,451 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:38,431 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:39,447 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:40,455 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:41,453 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:42,448 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:43,455 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:44,448 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:45,448 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:46,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:47,443 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:48,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:49,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:50,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:57,045 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:57,208 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:58,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:26:59,215 [INFO] 127.0.0.1 - - [17/Jun/2026 15:26:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:00,202 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:00] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:01,223 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:01] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:02,201 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:03,207 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:03] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:04,208 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:04] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:05,222 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:05] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:06,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:06] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:07,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:08,212 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:08] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:09,219 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:09] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:10,208 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:10] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:11,226 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:12,212 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:13,213 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:14,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:15,207 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:16,215 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:17,205 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:17] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:18,215 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:18] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:19,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:19] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:20,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:20] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:21,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:21] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:22,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:22] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:23,215 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:23] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:24,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:25,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:26,223 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:27,210 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:28,220 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:29,214 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:30,222 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:31,213 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:32,206 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:33,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:34,224 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:35,221 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:36,225 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:37,444 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:38,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:39,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:40,453 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:41,446 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:42,443 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:43,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:44,454 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:45,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:46,448 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:47,444 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:48,450 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:49,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:50,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:51,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:52,453 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:53,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:53] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:54,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:54] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:55,450 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:55] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:56,205 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:56] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:57,221 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:58,208 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:27:59,227 [INFO] 127.0.0.1 - - [17/Jun/2026 15:27:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:00,203 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:00] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:01,232 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:01] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:02,219 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:03,202 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:03] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:04,207 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:04] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:07,351 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:08,566 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:08] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:09,718 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:09] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:11,515 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:12,118 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:13,526 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:14,373 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:14,909 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:14,992 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:15,009 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:15,210 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:16,522 [INFO]   Week 1/3: 2026-06-01 → 2026-06-07: 1,288,813 rows
+2026-06-17 15:28:16,525 [INFO]   Fetching Week 2/3: 2026-06-08 → 2026-06-14
+2026-06-17 15:28:16,535 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:17,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:17] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:18,221 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:18] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:19,215 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:19] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:20,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:20] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:21,221 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:21] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:22,217 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:22] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:23,215 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:23] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:24,215 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:25,221 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:26,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:27,226 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:28,209 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:29,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:30,220 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:31,210 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:32,210 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:33,212 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:34,213 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:35,211 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:36,209 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:37,209 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:38,216 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:39,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:40,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:41,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:42,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:43,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:44,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:45,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:46,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:47,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:48,460 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:49,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:50,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:51,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:52,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:53,446 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:53] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:54,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:54] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:55,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:55] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:56,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:56] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:57,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:58,432 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:28:59,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:28:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:29:00,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:29:00] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:29:05,263 [INFO] 127.0.0.1 - - [17/Jun/2026 15:29:05] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:29:07,705 [INFO] 127.0.0.1 - - [17/Jun/2026 15:29:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:29:07,720 [INFO] 127.0.0.1 - - [17/Jun/2026 15:29:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:29:07,731 [INFO] 127.0.0.1 - - [17/Jun/2026 15:29:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:33:15,367 [INFO] === Admin full fetch starting ===
+2026-06-17 15:33:15,368 [INFO] 127.0.0.1 - - [17/Jun/2026 15:33:15] "POST /api/admin/fetch HTTP/1.1" 200 -
+2026-06-17 15:33:15,378 [INFO] Target: 2026-06 | Range: 2026-06-01 → 2026-06-17 | Chunks: 3 weekly batches
+2026-06-17 15:33:15,393 [INFO]   Fetching Week 1/3: 2026-06-01 → 2026-06-07
+2026-06-17 15:33:16,396 [INFO] 127.0.0.1 - - [17/Jun/2026 15:33:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:33:23,595 [INFO] 127.0.0.1 - - [17/Jun/2026 15:33:23] "[31m[1mPOST /api/admin/fetch HTTP/1.1[0m" 409 -
+2026-06-17 15:34:11,218 [INFO] Building bootstrap cache...
+2026-06-17 15:34:12,562 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8091
+ * Running on http://10.10.0.59:8091
+2026-06-17 15:34:12,564 [INFO] [33mPress CTRL+C to quit[0m
+2026-06-17 15:34:12,568 [INFO]  * Restarting with stat
+2026-06-17 15:34:13,872 [INFO] Building bootstrap cache...
+2026-06-17 15:34:13,899 [WARNING]  * Debugger is active!
+2026-06-17 15:34:13,916 [INFO]  * Debugger PIN: 964-126-480
+2026-06-17 15:34:20,304 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:20] "GET /admin HTTP/1.1" 200 -
+2026-06-17 15:34:20,385 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:20] "GET /api/admin/users HTTP/1.1" 200 -
+2026-06-17 15:34:20,721 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:20] "GET /api/admin/scope-options HTTP/1.1" 200 -
+2026-06-17 15:34:29,490 [INFO] === Admin full fetch starting ===
+2026-06-17 15:34:29,491 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:29] "POST /api/admin/fetch HTTP/1.1" 200 -
+2026-06-17 15:34:29,500 [INFO] Target: 2026-06 | Range: 2026-06-01 → 2026-06-17 | Chunks: 3 weekly batches
+2026-06-17 15:34:29,617 [INFO]   Fetching Week 1/3: 2026-06-01 → 2026-06-07
+2026-06-17 15:34:30,511 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:31,520 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:33,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:34,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:35,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:36,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:37,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:38,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:39,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:40,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:41,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:42,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:43,431 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:43,911 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:43] "GET /api/admin/data-status HTTP/1.1" 200 -
+2026-06-17 15:34:44,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:45,423 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:46,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:47,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:48,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:49,427 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:50,462 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:51,424 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:52,424 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:53,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:53] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:54,424 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:54] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:55,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:55] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:56,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:56] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:57,453 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:58,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:34:59,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:34:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:00,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:00] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:01,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:01] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:02,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:03,449 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:03] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:04,428 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:04] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:05,428 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:05] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:06,430 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:06] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:07,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:08,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:08] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:09,421 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:09] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:10,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:10] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:11,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:12,422 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:13,260 [INFO] Cache built in 62.0s — 40068 KB, snap=2026-06-10, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-17 15:35:13,428 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:14,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:15,851 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:16,072 [INFO] Cache built in 62.2s — 40068 KB, snap=2026-06-10, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-17 15:35:16,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:17,445 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:17] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:18,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:18] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:19,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:19] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:20,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:20] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:21,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:21] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:22,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:22] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:23,431 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:23] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:24,430 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:25,444 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:26,455 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:27,428 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:28,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:29,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:30,446 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:31,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:35:51,983 [INFO] 127.0.0.1 - - [17/Jun/2026 15:35:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:36:02,962 [INFO]   Week 1/3: 2026-06-01 → 2026-06-07: 1,288,813 rows
+2026-06-17 15:36:02,964 [INFO]   Fetching Week 2/3: 2026-06-08 → 2026-06-14
+2026-06-17 15:36:50,458 [INFO] 127.0.0.1 - - [17/Jun/2026 15:36:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:37:22,888 [INFO]   Week 2/3: 2026-06-08 → 2026-06-14: 1,289,655 rows
+2026-06-17 15:37:22,889 [INFO]   Fetching Week 3/3: 2026-06-15 → 2026-06-17
+2026-06-17 15:37:50,452 [INFO] 127.0.0.1 - - [17/Jun/2026 15:37:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:38:06,950 [INFO]   Week 3/3: 2026-06-15 → 2026-06-17: 180,376 rows
+2026-06-17 15:38:09,029 [INFO] Total fetched: 2,758,844 rows across 3 chunks for 2026-06
+2026-06-17 15:38:50,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:38:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:39:58,442 [INFO] 127.0.0.1 - - [17/Jun/2026 15:39:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:39:58,442 [INFO] Cleared 2026-06 from all SQLite tables
+2026-06-17 15:39:58,513 [INFO]   2026-06: 2,758,844 rows from DataFrame (no parquet)
+2026-06-17 15:40:41,171 [INFO]     daily_hpc:    162,888 rows
+2026-06-17 15:40:46,792 [INFO]     monthly_hpc:  5,857 rows
+2026-06-17 15:40:50,457 [INFO] 127.0.0.1 - - [17/Jun/2026 15:40:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:41:03,581 [INFO]     monthly_farmer: 84,622 rows
+2026-06-17 15:41:52,583 [INFO] 127.0.0.1 - - [17/Jun/2026 15:41:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:41:59,304 [INFO]     quality_incidents: 919,814 rows
+2026-06-17 15:42:14,254 [INFO]   proc_quality_incidents: deleted 223,285 rows (before 2025-06-17)
+2026-06-17 15:42:16,759 [INFO] Building snapshot for 2026-06-15
+2026-06-17 15:42:16,761 [INFO]   MTD:   2026-06-01 -> 2026-06-15  (15d)
+2026-06-17 15:42:16,762 [INFO]   LM:    2026-05-01 -> 2026-05-31  (31d)
+2026-06-17 15:42:16,762 [INFO]   LMTD:  2026-05-01 -> 2026-05-15  (15d)
+2026-06-17 15:42:16,763 [INFO]   LYMTD: 2025-06-01 -> 2025-06-15  (15d)
+2026-06-17 15:42:16,763 [INFO]   LYSM:  2025-06-01 -> 2025-06-30
+2026-06-17 15:42:24,092 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:24,520 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:25,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:26,527 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:27,530 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:28,527 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:29,529 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:30,510 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:31,525 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:32,520 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:33,528 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:34,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:35,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:36,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:37,529 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:38,512 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:39,528 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:40,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:41,531 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:42,523 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:43,533 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:44,527 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:45,516 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:46,523 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:47,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:48,513 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:49,523 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:50,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:51,523 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:52,514 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:53,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:53] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:54,522 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:54] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:55,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:55] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:56,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:56] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:58,438 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:42:59,485 [INFO] 127.0.0.1 - - [17/Jun/2026 15:42:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:01,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:01] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:02,421 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:03,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:03] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:04,425 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:04] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:05,421 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:05] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:06,481 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:06] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:07,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:08,432 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:08] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:09,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:09] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:10,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:10] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:11,437 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:12,430 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:13,430 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:14,434 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:15,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:16,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:17,423 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:17] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:18,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:18] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:19,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:19] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:20,429 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:20] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:21,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:21] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:22,439 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:22] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:23,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:23] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:24,426 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:25,441 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:26,440 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:27,436 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:28,433 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:29,435 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:29,667 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:30,519 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:31,511 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:32,528 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:33,521 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:34,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:35,521 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:36,529 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:37,529 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:38,532 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:39,527 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:40,531 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:40] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:41,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:41] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:42,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:42] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:43,521 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:43] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:44,534 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:44] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:45,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:45] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:46,512 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:46] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:47,521 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:47] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:48,522 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:48] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:49,514 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:49] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:50,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:50] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:51,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:51] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:52,520 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:52] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:53,528 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:53] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:54,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:54] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:55,516 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:55] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:56,522 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:56] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:57,527 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:57] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:58,519 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:58] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:43:59,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:43:59] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:00,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:00] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:01,523 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:01] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:02,519 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:02] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:03,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:03] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:04,516 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:04] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:05,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:05] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:06,533 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:06] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:07,521 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:07] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:08,515 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:08] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:09,521 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:09] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:10,523 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:10] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:11,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:11] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:12,522 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:12] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:13,519 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:13] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:14,521 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:14] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:15,519 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:15] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:16,522 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:16] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:17,519 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:17] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:18,522 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:18] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:19,519 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:19] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:20,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:20] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:21,522 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:21] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:22,532 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:22] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:23,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:23] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:24,336 [INFO] Snapshot built — 4,860 HPCs
+2026-06-17 15:44:24,527 [INFO] Building farmer health for 2026-06-15
+2026-06-17 15:44:24,535 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:24] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:25,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:25] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:26,512 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:26] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:26,725 [INFO] Farmer health built — 4,713 HPCs for 2026-06-15
+2026-06-17 15:44:26,748 [INFO] Building farmer RFM for 2026-06-15
+2026-06-17 15:44:27,335 [INFO]   RFM thresholds: F=[15,15d] M=[3953.12,9236.15 Rs]
+2026-06-17 15:44:27,511 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:27] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:28,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:28] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:28,642 [INFO]   Dormant candidate count: 16,574
+2026-06-17 15:44:28,710 [INFO]   Current month active farmers: 80,859
+2026-06-17 15:44:29,524 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:29] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:30,533 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:30] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:31,515 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:31] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:31,740 [INFO]   Current month active farmers : 80,859
+2026-06-17 15:44:31,741 [INFO]   Dormant candidates (LM->now) : 16,574
+2026-06-17 15:44:31,741 [INFO]   Churned candidates (2m->now) : 6,445
+2026-06-17 15:44:32,514 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:32] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:33,530 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:33] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:34,510 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:34] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:35,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:35] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:36,517 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:36] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:37,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:37] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:38,518 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:38] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:39,042 [INFO]   RFM At Risk: 21,091
+2026-06-17 15:44:39,043 [INFO]   RFM Champion: 47,788
+2026-06-17 15:44:39,043 [INFO]   RFM Churned: 6,363
+2026-06-17 15:44:39,044 [INFO]   RFM Dormant: 16,574
+2026-06-17 15:44:39,044 [INFO]   RFM Loyal: 11,980
+2026-06-17 15:44:39,051 [INFO] === Admin fetch done in 609s ===
+2026-06-17 15:44:39,602 [INFO] Building bootstrap cache...
+2026-06-17 15:44:39,608 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:39] "GET /api/admin/fetch-status HTTP/1.1" 200 -
+2026-06-17 15:44:56,940 [INFO] 127.0.0.1 - - [17/Jun/2026 15:44:56] "GET /api/admin/data-status HTTP/1.1" 200 -
+2026-06-17 15:45:45,763 [INFO] Cache built in 66.2s — 40116 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 14:45:49,772 [INFO] Initialized scoped_targets with company defaults
+2026-06-19 14:45:49,780 [INFO] Building bootstrap cache...
+2026-06-19 14:45:49,789 [WARNING] Cache build skipped — no snapshot data yet
+2026-06-19 14:45:51,232 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8091
+ * Running on http://10.10.10.208:8091
+2026-06-19 14:45:51,232 [INFO] [33mPress CTRL+C to quit[0m
+2026-06-19 14:45:51,274 [INFO]  * Restarting with stat
+2026-06-19 14:45:53,846 [INFO] Building bootstrap cache...
+2026-06-19 14:45:53,858 [WARNING] Cache build skipped — no snapshot data yet
+2026-06-19 14:45:53,901 [WARNING]  * Debugger is active!
+2026-06-19 14:45:53,970 [INFO]  * Debugger PIN: 964-126-480
+2026-06-19 14:46:02,960 [INFO] 127.0.0.1 - - [19/Jun/2026 14:46:02] "[32mGET / HTTP/1.1[0m" 302 -
+2026-06-19 14:46:02,994 [INFO] 127.0.0.1 - - [19/Jun/2026 14:46:02] "GET /login HTTP/1.1" 200 -
+2026-06-19 14:46:15,920 [WARNING] Failed login: cxo@heritagefoods.in
+2026-06-19 14:46:15,921 [INFO] 127.0.0.1 - - [19/Jun/2026 14:46:15] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2026-06-19 14:46:24,093 [WARNING] Failed login: admin
+2026-06-19 14:46:24,095 [INFO] 127.0.0.1 - - [19/Jun/2026 14:46:24] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2026-06-19 14:46:27,453 [INFO] 127.0.0.1 - - [19/Jun/2026 14:46:27] "[31m[1mGET /api/admin/users HTTP/1.1[0m" 401 -
+2026-06-19 14:46:51,971 [WARNING] Failed login: admin@heritagefoods.in
+2026-06-19 14:46:51,972 [INFO] 127.0.0.1 - - [19/Jun/2026 14:46:51] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2026-06-19 14:47:05,422 [INFO] Login: admin (admin)
+2026-06-19 14:47:05,426 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:05] "POST /login HTTP/1.1" 200 -
+2026-06-19 14:47:05,547 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:05] "GET /admin HTTP/1.1" 200 -
+2026-06-19 14:47:05,755 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:05] "GET /api/admin/users HTTP/1.1" 200 -
+2026-06-19 14:47:05,755 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:05] "GET /api/admin/scope-options HTTP/1.1" 200 -
+2026-06-19 14:47:08,312 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:08] "GET /api/admin/hpcs HTTP/1.1" 200 -
+2026-06-19 14:47:09,846 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:09] "GET /api/admin/users HTTP/1.1" 200 -
+2026-06-19 14:47:35,033 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:35] "[35m[1mPOST /api/admin/users HTTP/1.1[0m" 201 -
+2026-06-19 14:47:35,103 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:35] "GET /api/admin/users HTTP/1.1" 200 -
+2026-06-19 14:47:37,125 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:37] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-06-19 14:47:37,144 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:37] "GET /login HTTP/1.1" 200 -
+2026-06-19 14:47:43,425 [INFO] Login: cxo@heritagefoods.in (cxo)
+2026-06-19 14:47:43,432 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:43] "POST /login HTTP/1.1" 200 -
+2026-06-19 14:47:43,544 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:43] "GET / HTTP/1.1" 200 -
+2026-06-19 14:47:43,741 [INFO] Building bootstrap cache...
+2026-06-19 14:47:43,755 [WARNING] Cache build skipped — no snapshot data yet
+2026-06-19 14:47:43,758 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:43] "[35m[1mGET /api/bootstrap HTTP/1.1[0m" 503 -
+2026-06-19 14:47:43,806 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:43] "GET /api/targets HTTP/1.1" 200 -
+2026-06-19 14:47:44,033 [INFO] 127.0.0.1 - - [19/Jun/2026 14:47:44] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2026-06-19 14:48:14,480 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:14] "[32mGET / HTTP/1.1[0m" 302 -
+2026-06-19 14:48:14,523 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:14] "GET /admin HTTP/1.1" 200 -
+2026-06-19 14:48:14,657 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:14] "GET /api/admin/users HTTP/1.1" 200 -
+2026-06-19 14:48:15,951 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:15] "GET /api/admin/scope-options HTTP/1.1" 200 -
+2026-06-19 14:48:19,683 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:19] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-06-19 14:48:19,704 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:19] "GET /login HTTP/1.1" 200 -
+2026-06-19 14:48:27,882 [INFO] Login: cxo@heritagefoods.in (cxo)
+2026-06-19 14:48:27,884 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:27] "POST /login HTTP/1.1" 200 -
+2026-06-19 14:48:27,975 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:27] "GET / HTTP/1.1" 200 -
+2026-06-19 14:48:28,053 [INFO] 127.0.0.1 - - [19/Jun/2026 14:48:28] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2026-06-19 14:48:28,220 [INFO] Building bootstrap cache...
+2026-06-19 14:51:32,991 [INFO] Cache built in 184.8s — 40110 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 14:51:35,735 [INFO] 127.0.0.1 - - [19/Jun/2026 14:51:35] "GET /api/bootstrap HTTP/1.1" 200 -
+2026-06-19 14:51:36,616 [INFO] 127.0.0.1 - - [19/Jun/2026 14:51:36] "GET /api/targets HTTP/1.1" 200 -
+2026-06-19 14:51:45,982 [INFO] 127.0.0.1 - - [19/Jun/2026 14:51:45] "GET /api/scorecard/history HTTP/1.1" 200 -
+2026-06-19 15:26:38,706 [INFO] Building bootstrap cache...
+2026-06-19 15:26:40,104 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8091
+ * Running on http://10.10.0.59:8091
+2026-06-19 15:26:40,105 [INFO] [33mPress CTRL+C to quit[0m
+2026-06-19 15:26:40,110 [INFO]  * Restarting with stat
+2026-06-19 15:26:42,977 [INFO] Building bootstrap cache...
+2026-06-19 15:26:43,017 [WARNING]  * Debugger is active!
+2026-06-19 15:26:43,047 [INFO]  * Debugger PIN: 964-126-480
+2026-06-19 15:26:46,653 [INFO] 127.0.0.1 - - [19/Jun/2026 15:26:46] "GET / HTTP/1.1" 200 -
+2026-06-19 15:26:46,764 [INFO] Building bootstrap cache...
+2026-06-19 15:26:47,103 [INFO] 127.0.0.1 - - [19/Jun/2026 15:26:47] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2026-06-19 15:28:10,226 [INFO] Cache built in 91.5s — 40110 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 15:28:27,882 [INFO] Cache built in 104.9s — 40110 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 15:28:32,020 [INFO] Cache built in 105.3s — 40110 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 15:28:34,803 [INFO] 127.0.0.1 - - [19/Jun/2026 15:28:34] "GET /api/bootstrap HTTP/1.1" 200 -
+2026-06-19 15:28:35,666 [INFO] 127.0.0.1 - - [19/Jun/2026 15:28:35] "GET /api/targets HTTP/1.1" 200 -
+2026-06-19 15:28:41,980 [INFO] 127.0.0.1 - - [19/Jun/2026 15:28:41] "GET /api/scorecard/history HTTP/1.1" 200 -
+2026-06-19 15:30:51,914 [INFO] 127.0.0.1 - - [19/Jun/2026 15:30:51] "GET / HTTP/1.1" 200 -
+2026-06-19 15:30:51,958 [INFO] 127.0.0.1 - - [19/Jun/2026 15:30:51] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2026-06-19 15:30:54,669 [INFO] 127.0.0.1 - - [19/Jun/2026 15:30:54] "GET /api/bootstrap HTTP/1.1" 200 -
+2026-06-19 15:30:55,196 [INFO] 127.0.0.1 - - [19/Jun/2026 15:30:55] "GET /api/targets HTTP/1.1" 200 -
+2026-06-19 15:31:00,565 [INFO] 127.0.0.1 - - [19/Jun/2026 15:31:00] "GET /api/scorecard/history HTTP/1.1" 200 -
+2026-06-19 15:34:04,147 [INFO]  * Detected change in 'C:\\Users\\raghavkumar.j\\Desktop\\demo\\prism\\app.py', reloading
+2026-06-19 15:34:04,437 [INFO]  * Restarting with stat
+2026-06-19 15:34:07,279 [INFO] Building bootstrap cache...
+2026-06-19 15:34:07,331 [WARNING]  * Debugger is active!
+2026-06-19 15:34:07,363 [INFO]  * Debugger PIN: 964-126-480
+2026-06-19 15:34:30,567 [INFO] Building bootstrap cache...
+2026-06-19 15:34:31,969 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8091
+ * Running on http://10.10.0.59:8091
+2026-06-19 15:34:31,971 [INFO] [33mPress CTRL+C to quit[0m
+2026-06-19 15:34:31,975 [INFO]  * Restarting with stat
+2026-06-19 15:34:34,203 [INFO] Building bootstrap cache...
+2026-06-19 15:34:34,236 [WARNING]  * Debugger is active!
+2026-06-19 15:34:34,255 [INFO]  * Debugger PIN: 964-126-480
+2026-06-19 15:35:22,724 [INFO] 127.0.0.1 - - [19/Jun/2026 15:35:22] "GET / HTTP/1.1" 200 -
+2026-06-19 15:35:22,833 [INFO] Building bootstrap cache...
+2026-06-19 15:35:23,186 [INFO] 127.0.0.1 - - [19/Jun/2026 15:35:23] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2026-06-19 15:35:36,666 [INFO] Cache built in 66.1s — 42239 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 15:35:40,212 [INFO] Cache built in 66.0s — 42239 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 15:35:40,337 [INFO] 127.0.0.1 - - [19/Jun/2026 15:35:40] "GET / HTTP/1.1" 200 -
+2026-06-19 15:35:40,388 [INFO] 127.0.0.1 - - [19/Jun/2026 15:35:40] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2026-06-19 15:35:43,011 [INFO] 127.0.0.1 - - [19/Jun/2026 15:35:43] "GET /api/bootstrap HTTP/1.1" 200 -
+2026-06-19 15:35:43,825 [INFO] 127.0.0.1 - - [19/Jun/2026 15:35:43] "GET /api/targets HTTP/1.1" 200 -
+2026-06-19 15:35:47,143 [INFO] 127.0.0.1 - - [19/Jun/2026 15:35:47] "GET /api/scorecard/history HTTP/1.1" 200 -
+2026-06-19 15:36:38,779 [INFO] Cache built in 75.9s — 42239 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 15:36:41,586 [INFO] 127.0.0.1 - - [19/Jun/2026 15:36:41] "GET /api/bootstrap HTTP/1.1" 200 -
+2026-06-19 16:08:33,373 [INFO]  * Detected change in 'C:\\Users\\raghavkumar.j\\Desktop\\demo\\prism\\test.py', reloading
+2026-06-19 16:08:33,635 [INFO]  * Restarting with stat
+2026-06-19 16:08:36,385 [INFO] Building bootstrap cache...
+2026-06-19 16:08:36,437 [WARNING]  * Debugger is active!
+2026-06-19 16:08:36,475 [INFO]  * Debugger PIN: 964-126-480
+2026-06-19 16:09:58,184 [INFO] Cache built in 81.8s — 42239 KB, snap=2026-06-15, zone caches: ['ZONE -1', 'ZONE -2', 'ZONE -3', 'ZONE -4', 'ZONE -5']
+2026-06-19 16:11:41,248 [INFO]  * Detected change in 'C:\\Users\\raghavkumar.j\\Desktop\\demo\\prism\\test.py', reloading
+2026-06-19 16:11:41,515 [INFO]  * Restarting with stat

@@ -1342,6 +1342,7 @@ def build_farmer_rfm(conn=None, progress_cb=None):
         -- Combine: active + dormant + churned
         all_farmers AS (
             SELECT *,
+                   {calendar.monthrange(curr_yr, curr_mth)[1]} AS days_in_month,
                    CASE WHEN delivery_days >= {f_high} THEN 3
                         WHEN delivery_days >= {f_low}  THEN 2
                         ELSE 1 END AS f_score,
@@ -1350,9 +1351,9 @@ def build_farmer_rfm(conn=None, progress_cb=None):
                         ELSE 1 END AS m_score
             FROM curr
             UNION ALL
-            SELECT *, 1 AS f_score, 1 AS m_score FROM dormant
+            SELECT *, {calendar.monthrange(prev_yr, prev_mth)[1]} AS days_in_month, 1 AS f_score, 1 AS m_score FROM dormant
             UNION ALL
-            SELECT *, 1 AS f_score, 1 AS m_score FROM churned
+            SELECT *, {calendar.monthrange(pp_yr, pp_mth)[1]} AS days_in_month, 1 AS f_score, 1 AS m_score FROM churned
         )
         SELECT
             '{snap_date}'  AS snapshot_date,
@@ -1366,7 +1367,7 @@ def build_farmer_rfm(conn=None, progress_cb=None):
                 WHEN r_score = 2                                   THEN 'Dormant'
                 ELSE                                                    'Churned'
             END AS tier,
-            total_qty_ltr, total_payout, delivery_days, avg_fat, lpd
+            total_qty_ltr, total_payout, delivery_days, days_in_month, avg_fat, lpd
         FROM all_farmers
     """)
     conn.commit()
@@ -1504,7 +1505,7 @@ def _ensure_tables(conn):
             milk_type TEXT, r_score INTEGER, f_score INTEGER, m_score INTEGER,
             rfm_score INTEGER, tier TEXT,
             total_qty_ltr REAL, total_payout REAL,
-            delivery_days INTEGER, avg_fat REAL, lpd REAL
+            delivery_days INTEGER, days_in_month INTEGER, avg_fat REAL, lpd REAL
         );
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

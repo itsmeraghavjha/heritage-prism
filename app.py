@@ -280,6 +280,7 @@ def  _build_cache():
                    ROUND(r.total_qty_ltr,0)        AS total_qty_ltr,
                    ROUND(r.total_payout,0)         AS total_payout,
                    r.delivery_days,
+           r.days_in_month,
                    ROUND(r.avg_fat,2)              AS avg_fat,
                    ROUND(r.lpd,1)                  AS lpd,
                    CASE WHEN r.avg_fat < 3.5 THEN 1 ELSE 0 END AS quality_risk

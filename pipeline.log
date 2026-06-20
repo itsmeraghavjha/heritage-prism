@@ -617,3 +617,74 @@
 2026-04-21 12:34:40,826 [INFO]   RFM Churned: 9,305
 2026-04-21 12:34:40,827 [INFO]   RFM Dormant: 42,286
 2026-04-21 12:34:40,828 [INFO]   RFM Loyal: 7,731
+2026-06-19 14:45:29,068 [INFO] Default admin user created: admin / admin@123 — CHANGE THIS IMMEDIATELY
+2026-06-19 14:45:29,082 [ERROR] proc_daily_hpc is empty — cannot build snapshot
+2026-06-19 14:53:01,712 [INFO] Building snapshot for 2026-06-15
+2026-06-19 14:53:01,713 [INFO]   MTD:   2026-06-01 -> 2026-06-15  (15d)
+2026-06-19 14:53:01,713 [INFO]   LM:    2026-05-01 -> 2026-05-31  (31d)
+2026-06-19 14:53:01,714 [INFO]   LMTD:  2026-05-01 -> 2026-05-15  (15d)
+2026-06-19 14:53:01,714 [INFO]   LYMTD: 2025-06-01 -> 2025-06-15  (15d)
+2026-06-19 14:53:01,715 [INFO]   LYSM:  2025-06-01 -> 2025-06-30
+2026-06-19 14:57:37,277 [INFO] Snapshot built — 4,860 HPCs
+2026-06-19 14:57:37,956 [INFO] Building farmer health for 2026-06-15
+2026-06-19 14:57:41,636 [INFO] Farmer health built — 4,713 HPCs for 2026-06-15
+2026-06-19 14:57:42,030 [INFO] Building farmer RFM for 2026-06-15
+2026-06-19 14:57:42,908 [INFO]   RFM thresholds: F=[15,15d] M=[3953.12,9236.15 Rs]
+2026-06-19 14:57:44,737 [INFO]   Dormant candidate count: 16,574
+2026-06-19 14:57:44,843 [INFO]   Current month active farmers: 80,859
+2026-06-19 14:57:48,811 [INFO]   Current month active farmers : 80,859
+2026-06-19 14:57:48,813 [INFO]   Dormant candidates (LM->now) : 16,574
+2026-06-19 14:57:48,815 [INFO]   Churned candidates (2m->now) : 6,445
+2026-06-19 15:02:42,360 [INFO] Building snapshot for 2026-06-15
+2026-06-19 15:02:42,360 [INFO]   MTD:   2026-06-01 -> 2026-06-15  (15d)
+2026-06-19 15:02:42,361 [INFO]   LM:    2026-05-01 -> 2026-05-31  (31d)
+2026-06-19 15:02:42,361 [INFO]   LMTD:  2026-05-01 -> 2026-05-15  (15d)
+2026-06-19 15:02:42,361 [INFO]   LYMTD: 2025-06-01 -> 2025-06-15  (15d)
+2026-06-19 15:02:42,361 [INFO]   LYSM:  2025-06-01 -> 2025-06-30
+2026-06-19 15:06:48,398 [INFO] Snapshot built — 4,860 HPCs
+2026-06-19 15:06:48,606 [INFO] Building farmer health for 2026-06-15
+2026-06-19 15:06:51,176 [INFO] Farmer health built — 4,713 HPCs for 2026-06-15
+2026-06-19 15:06:51,193 [INFO] Building farmer RFM for 2026-06-15
+2026-06-19 15:06:51,810 [INFO]   RFM thresholds: F=[15,15d] M=[3953.12,9236.15 Rs]
+2026-06-19 15:06:52,985 [INFO]   Dormant candidate count: 16,574
+2026-06-19 15:06:53,063 [INFO]   Current month active farmers: 80,859
+2026-06-19 15:06:55,645 [INFO]   Current month active farmers : 80,859
+2026-06-19 15:06:55,646 [INFO]   Dormant candidates (LM->now) : 16,574
+2026-06-19 15:06:55,646 [INFO]   Churned candidates (2m->now) : 6,445
+2026-06-19 15:12:05,357 [INFO] Building snapshot for 2026-06-15
+2026-06-19 15:12:05,358 [INFO]   MTD:   2026-06-01 -> 2026-06-15  (15d)
+2026-06-19 15:12:05,359 [INFO]   LM:    2026-05-01 -> 2026-05-31  (31d)
+2026-06-19 15:12:05,359 [INFO]   LMTD:  2026-05-01 -> 2026-05-15  (15d)
+2026-06-19 15:12:05,360 [INFO]   LYMTD: 2025-06-01 -> 2025-06-15  (15d)
+2026-06-19 15:12:05,361 [INFO]   LYSM:  2025-06-01 -> 2025-06-30
+2026-06-19 15:14:47,277 [INFO] Snapshot built — 4,860 HPCs
+2026-06-19 15:14:47,504 [INFO] Building farmer health for 2026-06-15
+2026-06-19 15:14:51,433 [INFO] Farmer health built — 4,713 HPCs for 2026-06-15
+2026-06-19 15:14:51,481 [INFO] Building farmer RFM for 2026-06-15
+2026-06-19 15:14:52,473 [INFO]   RFM thresholds: F=[15,15d] M=[3953.12,9236.15 Rs]
+2026-06-19 15:14:54,564 [INFO]   Dormant candidate count: 16,574
+2026-06-19 15:14:54,673 [INFO]   Current month active farmers: 80,859
+2026-06-19 15:14:59,064 [INFO]   Current month active farmers : 80,859
+2026-06-19 15:14:59,065 [INFO]   Dormant candidates (LM->now) : 16,574
+2026-06-19 15:14:59,066 [INFO]   Churned candidates (2m->now) : 6,445
+2026-06-19 15:19:11,400 [INFO] Building snapshot for 2026-06-15
+2026-06-19 15:19:11,400 [INFO]   MTD:   2026-06-01 -> 2026-06-15  (15d)
+2026-06-19 15:19:11,401 [INFO]   LM:    2026-05-01 -> 2026-05-31  (31d)
+2026-06-19 15:19:11,401 [INFO]   LMTD:  2026-05-01 -> 2026-05-15  (15d)
+2026-06-19 15:19:11,401 [INFO]   LYMTD: 2025-06-01 -> 2025-06-15  (15d)
+2026-06-19 15:19:11,402 [INFO]   LYSM:  2025-06-01 -> 2025-06-30
+2026-06-19 15:23:12,991 [INFO] Snapshot built — 4,860 HPCs
+2026-06-19 15:23:13,753 [INFO] Building farmer health for 2026-06-15
+2026-06-19 15:23:17,468 [INFO] Farmer health built — 4,713 HPCs for 2026-06-15
+2026-06-19 15:23:17,528 [INFO] Building farmer RFM for 2026-06-15
+2026-06-19 15:23:18,319 [INFO]   RFM thresholds: F=[15,15d] M=[3953.12,9236.15 Rs]
+2026-06-19 15:23:20,223 [INFO]   Dormant candidate count: 16,574
+2026-06-19 15:23:20,322 [INFO]   Current month active farmers: 80,859
+2026-06-19 15:23:24,470 [INFO]   Current month active farmers : 80,859
+2026-06-19 15:23:24,471 [INFO]   Dormant candidates (LM->now) : 16,574
+2026-06-19 15:23:24,471 [INFO]   Churned candidates (2m->now) : 6,445
+2026-06-19 15:23:33,056 [INFO]   RFM At Risk: 21,091
+2026-06-19 15:23:33,057 [INFO]   RFM Champion: 47,788
+2026-06-19 15:23:33,057 [INFO]   RFM Churned: 6,363
+2026-06-19 15:23:33,058 [INFO]   RFM Dormant: 16,574
+2026-06-19 15:23:33,058 [INFO]   RFM Loyal: 11,980
