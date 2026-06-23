@@ -796,18 +796,20 @@ def build_snapshot(conn=None, progress_cb=None):
     sql = f"""
     WITH
     hpc_dim AS (
+    SELECT hpc_plant_key, hpc_code, plant_code, hpc_name, plant_name,
+           area,                          -- ← ADD THIS
+           region_code, region, zone
+    FROM (
         SELECT hpc_plant_key, hpc_code, plant_code, hpc_name, plant_name,
-               area, region_code, region, zone
-        FROM (
-            SELECT hpc_plant_key, hpc_code, plant_code, hpc_name, plant_name,
-                   area, region_code, region, zone,
-                   ROW_NUMBER() OVER (
-                       PARTITION BY hpc_plant_key ORDER BY DATE(proc_date) DESC
-                   ) AS rn
-            FROM proc_daily_hpc
-            WHERE DATE(proc_date) >= DATE('{snap_date}', '-3 months')
-        ) t WHERE rn = 1
-    ),
+               area,                      -- ← ADD THIS
+               region_code, region, zone,
+               ROW_NUMBER() OVER (
+                   PARTITION BY hpc_plant_key ORDER BY DATE(proc_date) DESC
+               ) AS rn
+        FROM proc_daily_hpc
+        WHERE DATE(proc_date) >= DATE('{snap_date}', '-3 months')
+    ) t WHERE rn = 1
+),
 
     -- ── How many days has each REGION actually uploaded this cycle? ───────────
     -- This is the denominator for MTD/LMTD/LYMTD.
@@ -1421,6 +1423,13 @@ def _ensure_tables(conn):
         except Exception:
             pass  # column already exists — safe to ignore
 
+    try:
+        conn.execute("ALTER TABLE proc_period_snapshot ADD COLUMN area TEXT")
+        conn.commit()
+        log.info("Migrated proc_period_snapshot — added area column")
+    except Exception:
+        pass  # already exists
+
     # Migrate proc_farmer_rfm if missing plant_code column (schema was updated)
     rfm_cols = [r[1] for r in conn.execute(
         "PRAGMA table_info(proc_farmer_rfm)"
@@ -1471,22 +1480,24 @@ def _ensure_tables(conn):
             fat REAL, snf REAL, qty_ltr REAL, dumping_amt REAL, incident_type TEXT
         );
         CREATE TABLE IF NOT EXISTS proc_period_snapshot (
-            snapshot_date TEXT, hpc_plant_key TEXT,
-            hpc_code TEXT, plant_code TEXT, hpc_name TEXT, plant_name TEXT,
-            area TEXT, region_code TEXT, region TEXT, zone TEXT, milk_type TEXT,
-            mtd REAL, lm REAL, lmtd REAL, lymtd REAL, lysm REAL,
-            mtd_farmers REAL, lm_farmers REAL, lmtd_farmers REAL, lymtd_farmers REAL,
-            mtd_avg_fat REAL, lymtd_avg_fat REAL,
-            mtd_payout REAL, mtd_rate REAL, lm_rate REAL,
-            yoy_lpd_diff REAL, mom_lpd_diff REAL,
-            yoy_growth_pct REAL, mom_growth_pct REAL,
-            yoy_farmer_diff REAL, yoy_farmer_pct REAL,
-            region_active_days INTEGER DEFAULT 0,
-            has_mtd_data       INTEGER DEFAULT 0,
-            lm_avg_fat         REAL,
-            lm_avg_snf         REAL,
-            lm_cost_per_fat_kg REAL
-        );
+        snapshot_date TEXT, hpc_plant_key TEXT,
+        hpc_code TEXT, plant_code TEXT, hpc_name TEXT, plant_name TEXT,
+        area TEXT,                          -- ← ADD THIS
+        region_code TEXT, region TEXT, zone TEXT, milk_type TEXT,
+        mtd REAL, lm REAL, lmtd REAL, lymtd REAL, lysm REAL,
+        mtd_farmers REAL, lm_farmers REAL, lmtd_farmers REAL, lymtd_farmers REAL,
+        mtd_avg_fat REAL, lymtd_avg_fat REAL,
+        mtd_payout REAL, mtd_rate REAL, lm_rate REAL,
+        yoy_lpd_diff REAL, mom_lpd_diff REAL,
+        yoy_growth_pct REAL, mom_growth_pct REAL,
+        yoy_farmer_diff REAL, yoy_farmer_pct REAL,
+        region_active_days INTEGER DEFAULT 0,
+        has_mtd_data       INTEGER DEFAULT 0,
+        lm_avg_fat         REAL,
+        lm_avg_snf         REAL,
+        lm_cost_per_fat_kg REAL
+    );
+                       
         CREATE TABLE IF NOT EXISTS pipeline_log (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             run_at TEXT DEFAULT (datetime('now')),
@@ -1522,6 +1533,7 @@ def _ensure_tables(conn):
         );
     """)
     conn.commit()
+    
 
 
 def _ensure_indexes(conn):

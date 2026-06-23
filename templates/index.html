@@ -459,6 +459,12 @@ table.dt tbody tr.tr-green  td:first-child { border-left: 3px solid var(--green)
   <div class="tabs">
     <button class="tab on" onclick="switchTab('scorecard')"><span class="tab-icon">🎯</span> Performance Scorecard</button>
     <button class="tab" onclick="switchTab('overview')"><span class="tab-icon">📊</span> Overview</button>
+    <button class="tab" onclick="switchTab('plant')">
+  <span class="tab-icon">🏭</span> Plant Analytics
+</button>
+<button class="tab" onclick="switchTab('area')">
+  <span class="tab-icon">📍</span> Area Analytics
+</button>
     <button class="tab" onclick="switchTab('hpc')"><span class="tab-icon">🏭</span> HPC Drilldown</button>
     <button class="tab" onclick="switchTab('farmers')"><span class="tab-icon">👨‍🌾</span> Farmer Analytics</button>
     <button class="tab" onclick="switchTab('reports')"><span class="tab-icon">📋</span> Reports</button>
@@ -530,6 +536,190 @@ table.dt tbody tr.tr-green  td:first-child { border-left: 3px solid var(--green)
       </table>
     </div>
     <div id="pagRegion"></div> </div>
+</div>
+
+
+<div class="page" id="pg-plant">
+  <!-- KPI Row -->
+  <div class="kpi-row" id="plantKpis">
+    <div class="loading"><div class="spin"></div></div>
+  </div>
+
+  <!-- Plant Comparison Table -->
+  <div class="tbl-card" style="margin-bottom:24px">
+    <div class="tbl-head">
+      <div>
+        <div class="th-title">Plant Performance Comparison</div>
+        <div class="th-sub">All plants ranked by MTD volume — click a plant to drill in</div>
+      </div>
+    </div>
+    <div class="tbl-toolbar">
+      <input class="tbl-srch" id="srchPlant" 
+             placeholder="Search plants…" 
+             oninput="resetPage('plant'); renderPlantTab()">
+      <button class="tbl-export" 
+              onclick="exportCSV('tbPlant','plant_analytics','renderPlantTab','plant')">
+        ⬇ Export CSV
+      </button>
+    </div>
+    <div class="scr">
+      <table class="dt">
+        <thead><tr>
+          <th class="sth" data-tid="tbPlantT" data-col="0" 
+              onclick="sortTable('tbPlantT',0)">
+            Plant<span class="sort-arr" id="sa_tbPlantT_0"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="1" 
+              onclick="sortTable('tbPlantT',1)">
+            Zone<span class="sort-arr" id="sa_tbPlantT_1"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="2" 
+              onclick="sortTable('tbPlantT',2)">
+            Region<span class="sort-arr" id="sa_tbPlantT_2"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="3" 
+              onclick="sortTable('tbPlantT',3)">
+            HPCs<span class="sort-arr" id="sa_tbPlantT_3"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="4" 
+              onclick="sortTable('tbPlantT',4)">
+            MTD L/Day<span class="sort-arr" id="sa_tbPlantT_4"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="5" 
+              onclick="sortTable('tbPlantT',5)">
+            YoY %<span class="sort-arr" id="sa_tbPlantT_5"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="6" 
+              onclick="sortTable('tbPlantT',6)">
+            Farmers<span class="sort-arr" id="sa_tbPlantT_6"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="7" 
+              onclick="sortTable('tbPlantT',7)">
+            Attrition%<span class="sort-arr" id="sa_tbPlantT_7"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="8" 
+              onclick="sortTable('tbPlantT',8)">
+            Avg FAT%<span class="sort-arr" id="sa_tbPlantT_8"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="9" 
+              onclick="sortTable('tbPlantT',9)">
+            Dark HPCs<span class="sort-arr" id="sa_tbPlantT_9"></span>
+          </th>
+          <th class="sth" data-tid="tbPlantT" data-col="10" 
+              onclick="sortTable('tbPlantT',10)">
+            Status<span class="sort-arr" id="sa_tbPlantT_10"></span>
+          </th>
+        </tr></thead>
+        <tbody id="tbPlant"></tbody>
+      </table>
+    </div>
+    <div id="pagPlant"></div>
+  </div>
+
+  <!-- HPC breakdown for selected plant -->
+  <div class="card" id="plantDrillCard" style="display:none">
+    <div class="card-head">
+      <div>
+        <div class="c-title" id="plantDrillTitle">HPC Breakdown</div>
+        <div class="c-sub">All centers under this plant — sorted by MTD volume</div>
+      </div>
+      <button onclick="closePlantDrill()" 
+              style="background:none;border:1px solid var(--border);
+                     border-radius:6px;padding:6px 12px;cursor:pointer;
+                     font-family:var(--font-head);font-size:12px;font-weight:700">
+        ✕ Close
+      </button>
+    </div>
+    <div class="scr">
+      <table class="dt">
+        <thead><tr>
+          <th>Center Name</th>
+          <th>MTD L/Day</th>
+          <th>YoY %</th>
+          <th>Farmers</th>
+          <th>FAT%</th>
+          <th>Status</th>
+        </tr></thead>
+        <tbody id="tbPlantDrill"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="page" id="pg-area">
+  <!-- KPI Row -->
+  <div class="kpi-row" id="areaKpis">
+    <div class="loading"><div class="spin"></div></div>
+  </div>
+
+  <!-- Area Comparison Table -->
+  <div class="tbl-card">
+    <div class="tbl-head">
+      <div>
+        <div class="th-title">Area Performance Comparison</div>
+        <div class="th-sub">All areas ranked by MTD volume</div>
+      </div>
+    </div>
+    <div class="tbl-toolbar">
+      <input class="tbl-srch" id="srchArea" 
+             placeholder="Search areas…" 
+             oninput="resetPage('area'); renderAreaTab()">
+      <button class="tbl-export" 
+              onclick="exportCSV('tbArea','area_analytics','renderAreaTab','area')">
+        ⬇ Export CSV
+      </button>
+    </div>
+    <div class="scr">
+      <table class="dt">
+        <thead><tr>
+          <th class="sth" data-tid="tbAreaT" data-col="0" 
+              onclick="sortTable('tbAreaT',0)">
+            Area<span class="sort-arr" id="sa_tbAreaT_0"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="1" 
+              onclick="sortTable('tbAreaT',1)">
+            Region<span class="sort-arr" id="sa_tbAreaT_1"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="2" 
+              onclick="sortTable('tbAreaT',2)">
+            Zone<span class="sort-arr" id="sa_tbAreaT_2"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="3" 
+              onclick="sortTable('tbAreaT',3)">
+            HPCs<span class="sort-arr" id="sa_tbAreaT_3"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="4" 
+              onclick="sortTable('tbAreaT',4)">
+            MTD L/Day<span class="sort-arr" id="sa_tbAreaT_4"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="5" 
+              onclick="sortTable('tbAreaT',5)">
+            YoY %<span class="sort-arr" id="sa_tbAreaT_5"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="6" 
+              onclick="sortTable('tbAreaT',6)">
+            Farmers<span class="sort-arr" id="sa_tbAreaT_6"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="7" 
+              onclick="sortTable('tbAreaT',7)">
+            Farmer LPD<span class="sort-arr" id="sa_tbAreaT_7"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="8" 
+              onclick="sortTable('tbAreaT',8)">
+            Avg FAT%<span class="sort-arr" id="sa_tbAreaT_8"></span>
+          </th>
+          <th class="sth" data-tid="tbAreaT" data-col="9" 
+              onclick="sortTable('tbAreaT',9)">
+            Dark HPCs<span class="sort-arr" id="sa_tbAreaT_9"></span>
+          </th>
+        </tr></thead>
+        <tbody id="tbArea"></tbody>
+      </table>
+    </div>
+    <div id="pagArea"></div>
+  </div>
 </div>
 
 <div class="page" id="pg-hpc">
@@ -734,7 +924,7 @@ table.dt tbody tr.tr-green  td:first-child { border-left: 3px solid var(--green)
 <script>
 /* ── PAGINATION SYSTEM ── */
 let PAGE_SIZE = 15; // Set row limit per page here
-const TBL_PAGES = { overview: 1, hpc: 1, farmers: 1, quality: 1 };
+const TBL_PAGES = { overview: 1, hpc: 1, farmers: 1, quality: 1, plant: 1, area: 1 };
 
 function resetPage(key) { TBL_PAGES[key] = 1; }
 function changePage(key, dir, renderFnName) {
@@ -1093,6 +1283,8 @@ function renderTab(n){
   else if(n==='hpc') renderHpc();
   else if(n==='farmers') renderFarmers();
   else if(n==='quality') renderQuality();
+  else if(n==='plant') renderPlantTab();     // ← ADD
+  else if(n==='area') renderAreaTab();       // ← ADD
 }
 
 /* OVERVIEW */
@@ -2302,6 +2494,271 @@ switchTab = function(n) {
     switchReport(0);
   }
 };
+
+function renderPlantTab() {
+  const hpcs = getEffectiveHpcList();
+  const fh   = filt(D.farmer_health || []);
+
+  // Build farmer health lookup by hpc_plant_key
+  const fhMap = {};
+  fh.forEach(h => fhMap[h.hpc_plant_key] = h);
+
+  // Group HPC list by plant_code
+  const byPlant = gby(hpcs, 'plant_code');
+
+  let plants = Object.entries(byPlant)
+    .filter(([p]) => p && p !== 'undefined' && p !== 'null')
+    .map(([plant_code, rows]) => {
+      const mtd      = sF(rows, 'mtd');
+      const lymtd    = sF(rows, 'lymtd');
+      const lmtd     = sF(rows, 'lmtd');
+      const farmers  = sF(rows, 'mtd_farmers_total');
+      const dark     = rows.filter(r => !r.mtd || r.mtd == 0).length;
+      const fat      = wv(rows.filter(r => (r.mtd_avg_fat || 0) > 0), 'mtd_avg_fat', 'mtd');
+      const yoy      = lymtd ? (mtd - lymtd) / lymtd : null;
+
+      // Attrition: aggregate churned/prev from farmer health, only has_mtd_data HPCs
+      const validFh  = rows
+        .filter(r => r.has_mtd_data === 1)
+        .map(r => fhMap[r.hpc_plant_key])
+        .filter(Boolean);
+      const churned  = sF(validFh, 'churned');
+      const prevF    = validFh.reduce((s, h) =>
+        s + ((h.total_farmers || 0) - (h.acquired || 0) + (h.churned || 0)), 0);
+      const attrition = prevF > 0 ? (churned / prevF * 100) : 0;
+
+      return {
+        plant_code,
+        plant_name: rows[0]?.plant_name || plant_code,
+        zone:       rows[0]?.zone || '',
+        region:     rows[0]?.region || '',
+        hpc_count:  rows.length,
+        mtd, lymtd, lmtd, farmers, dark, fat, yoy, attrition,
+        _rows: rows,
+      };
+    });
+
+  // KPIs
+  const totalMtd     = sF(plants, 'mtd');
+  const bestPlant    = plants.reduce((a, b) => (a.mtd || 0) > (b.mtd || 0) ? a : b, {});
+  const darkPlants   = plants.filter(p => p.dark > 0).length;
+  const highAttr     = plants.filter(p => p.attrition > 15).length;
+
+  document.getElementById('plantKpis').innerHTML = [
+    { icon: '🏭', ibg: CL.greenlt, l: 'Total Plants',        
+      v: F.n(plants.length),        
+      ctx: 'Across all zones',                         ac: CL.green },
+    { icon: '📦', ibg: CL.bluelt,  l: 'Best Plant MTD',      
+      v: bestPlant.plant_name || '—',                  
+      ctx: F.n(bestPlant.mtd) + ' L/Day',             ac: CL.blue },
+    { icon: '⚫', ibg: CL.redlt,   l: 'Plants with Dark HPCs',
+      v: F.n(darkPlants),           
+      ctx: 'Has ≥1 zero-MTD center',                   ac: CL.red },
+    { icon: '📉', ibg: CL.amberlt, l: 'High Attrition Plants',
+      v: F.n(highAttr),             
+      ctx: '>15% farmer loss',                         ac: CL.amber },
+    { icon: '👨‍🌾', ibg: CL.teallt, l: 'Total Farmers',       
+      v: F.n(sF(plants, 'farmers')),
+      ctx: 'Active this month',                        ac: CL.teal },
+  ].map(h =>
+    `<div class="kpi" style="--k-accent:${h.ac}">
+       <div class="k-icon" style="background:${h.ibg}">${h.icon}</div>
+       <div class="k-label">${h.l}</div>
+       <div class="k-value">${h.v}</div>
+       <div class="k-ctx">${h.ctx}</div>
+     </div>`
+  ).join('');
+
+  // Filter & sort
+  plants = filterRows(plants, 'srchPlant');
+  plants = sortRowsByCol(plants, p => [
+    p.plant_name, p.zone, p.region, p.hpc_count,
+    p.mtd, (p.yoy || 0) * 100, p.farmers,
+    p.attrition, p.fat, p.dark, p.yoy
+  ], 'tbPlantT');
+
+  if (!_sortState['tbPlantT'] || _sortState['tbPlantT'].col < 0) {
+    plants.sort((a, b) => (b.mtd || 0) - (a.mtd || 0));
+  }
+
+  // Pagination
+  const totalItems = plants.length;
+  const curPage    = TBL_PAGES.plant;
+  const paged      = plants.slice((curPage - 1) * PAGE_SIZE, curPage * PAGE_SIZE);
+
+  document.getElementById('tbPlant').innerHTML = paged.map(p => {
+    const yoyOk = (p.yoy || 0) >= 0;
+    const cl    = !yoyOk && Math.abs(p.yoy) > 0.2 ? 'tr-red' 
+                : p.dark > 2 ? 'tr-amber' : '';
+    const attrCl = p.attrition > 20 ? 'style="color:var(--red);font-weight:700"'
+                 : p.attrition > 12  ? 'style="color:var(--amber)"' : '';
+    return `<tr class="${cl}" onclick="drillPlant('${p.plant_code}')">
+      <td>
+        <strong>${p.plant_name}</strong>
+        <div class="mono" style="font-size:10px;color:var(--muted)">${p.plant_code}</div>
+      </td>
+      <td style="color:var(--muted)">${p.zone}</td>
+      <td>${p.region}</td>
+      <td>${F.n(p.hpc_count)}</td>
+      <td><strong>${F.n(p.mtd)}</strong></td>
+      <td>${gb(p.yoy)}</td>
+      <td>${F.n(p.farmers)}</td>
+      <td ${attrCl}>${F.f1(p.attrition)}%</td>
+      <td style="color:var(--amber)">${F.f3(p.fat)}</td>
+      <td>${p.dark > 0 
+        ? `<span class="b b-r">${p.dark}</span>` 
+        : '<span style="color:var(--muted-lt)">0</span>'}</td>
+      <td>${p.yoy == null ? '<span class="pill p-new">New</span>'
+        : p.yoy >= 0.3    ? '<span class="pill p-star">⭐ Star</span>'
+        : p.yoy >= 0      ? '<span class="pill p-grow">Growing</span>'
+        : p.yoy >= -0.2   ? '<span class="pill p-dec">Declining</span>'
+        : '<span class="pill p-crit">Critical</span>'}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="11" style="text-align:center;padding:28px;color:var(--muted)">No plants match filter</td></tr>';
+
+  document.getElementById('pagPlant').innerHTML =
+    buildPagination(totalItems, 'plant', 'renderPlantTab');
+}
+
+function drillPlant(plant_code) {
+  const hpcs = getEffectiveHpcList()
+    .filter(h => String(h.plant_code) === String(plant_code))
+    .sort((a, b) => (b.mtd || 0) - (a.mtd || 0));
+
+  const pName = hpcs[0]?.plant_name || plant_code;
+  document.getElementById('plantDrillTitle').textContent =
+    `${pName} — ${hpcs.length} Centers`;
+  document.getElementById('plantDrillCard').style.display = '';
+
+  document.getElementById('tbPlantDrill').innerHTML = hpcs.map(r =>
+    `<tr onclick="openPanel('${r.hpc_plant_key}')">
+      <td>
+        <strong>${r.hpc_name || '—'}</strong>
+        <div class="mono" style="font-size:10px;color:var(--muted)">${r.hpc_plant_key}</div>
+      </td>
+      <td><strong>${F.n(r.mtd)}</strong></td>
+      <td>${gb(r.yoy_growth_pct)}</td>
+      <td>${F.n(r.mtd_farmers)}</td>
+      <td style="color:var(--amber)">${F.f3(r.mtd_avg_fat)}</td>
+      <td>${spill(r)}</td>
+    </tr>`
+  ).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--muted)">No centers</td></tr>';
+
+  document.getElementById('plantDrillCard')
+    .scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function closePlantDrill() {
+  document.getElementById('plantDrillCard').style.display = 'none';
+}
+
+
+function renderAreaTab() {
+  const hpcs = getEffectiveHpcList();
+
+  // Group by area — fall back gracefully if area is missing
+  const byArea = gby(hpcs.filter(h => h.area), 'area');
+
+  if (Object.keys(byArea).length === 0) {
+    document.getElementById('areaKpis').innerHTML =
+      `<div style="color:var(--muted);padding:24px;grid-column:1/-1">
+         Area data not available yet. Run a pipeline rebuild to populate area field.
+       </div>`;
+    document.getElementById('tbArea').innerHTML =
+      '<tr><td colspan="10" style="text-align:center;padding:28px;color:var(--muted)">No area data</td></tr>';
+    return;
+  }
+
+  let areas = Object.entries(byArea)
+    .filter(([a]) => a && a !== 'undefined' && a !== 'null')
+    .map(([area, rows]) => {
+      const mtd     = sF(rows, 'mtd');
+      const lymtd   = sF(rows, 'lymtd');
+      const farmers = sF(rows, 'mtd_farmers_total');
+      const dark    = rows.filter(r => !r.mtd || r.mtd == 0).length;
+      const fat     = wv(rows.filter(r => (r.mtd_avg_fat || 0) > 0), 'mtd_avg_fat', 'mtd');
+      const yoy     = lymtd ? (mtd - lymtd) / lymtd : null;
+      const farmerLpd = farmers > 0 ? mtd / farmers : 0;
+
+      return {
+        area,
+        region: rows[0]?.region || '',
+        zone:   rows[0]?.zone   || '',
+        hpc_count: rows.length,
+        mtd, lymtd, farmers, dark, fat, yoy, farmerLpd,
+      };
+    });
+
+  // KPIs
+  const bestArea   = areas.reduce((a, b) => (a.mtd||0) > (b.mtd||0) ? a : b, {});
+  const growAreas  = areas.filter(a => (a.yoy || 0) >= 0.3).length;
+  const darkAreas  = areas.filter(a => a.dark > 0).length;
+
+  document.getElementById('areaKpis').innerHTML = [
+    { icon: '📍', ibg: CL.greenlt, l: 'Total Areas',       
+      v: F.n(areas.length),         
+      ctx: 'Across all regions',       ac: CL.green },
+    { icon: '⭐', ibg: CL.teallt,  l: 'Star Areas (>30% YoY)',
+      v: F.n(growAreas),            
+      ctx: 'Strong growth',            ac: CL.teal },
+    { icon: '📦', ibg: CL.bluelt,  l: 'Best Area MTD',     
+      v: bestArea.area || '—',      
+      ctx: F.n(bestArea.mtd) + ' L/Day', ac: CL.blue },
+    { icon: '⚫', ibg: CL.redlt,   l: 'Areas with Dark HPCs',
+      v: F.n(darkAreas),            
+      ctx: 'Needs attention',          ac: CL.red },
+    { icon: '👨‍🌾', ibg: CL.amberlt, l: 'Total Farmers',    
+      v: F.n(sF(areas, 'farmers')), 
+      ctx: 'Active this month',        ac: CL.amber },
+  ].map(h =>
+    `<div class="kpi" style="--k-accent:${h.ac}">
+       <div class="k-icon" style="background:${h.ibg}">${h.icon}</div>
+       <div class="k-label">${h.l}</div>
+       <div class="k-value">${h.v}</div>
+       <div class="k-ctx">${h.ctx}</div>
+     </div>`
+  ).join('');
+
+  // Filter & sort
+  areas = filterRows(areas, 'srchArea');
+  areas = sortRowsByCol(areas, a => [
+    a.area, a.region, a.zone, a.hpc_count,
+    a.mtd, (a.yoy || 0) * 100, a.farmers,
+    a.farmerLpd, a.fat, a.dark
+  ], 'tbAreaT');
+
+  if (!_sortState['tbAreaT'] || _sortState['tbAreaT'].col < 0) {
+    areas.sort((a, b) => (b.mtd || 0) - (a.mtd || 0));
+  }
+
+  // Pagination
+  const totalItems = areas.length;
+  const curPage    = TBL_PAGES.area;
+  const paged      = areas.slice((curPage - 1) * PAGE_SIZE, curPage * PAGE_SIZE);
+
+  document.getElementById('tbArea').innerHTML = paged.map(a => {
+    const cl = (a.yoy || 0) < -0.2 ? 'tr-red'
+             : (a.yoy || 0) < 0    ? 'tr-amber'
+             : (a.yoy || 0) >= 0.3 ? 'tr-green' : '';
+    return `<tr class="${cl}">
+      <td><strong>${a.area}</strong></td>
+      <td>${a.region}</td>
+      <td style="color:var(--muted)">${a.zone}</td>
+      <td>${F.n(a.hpc_count)}</td>
+      <td><strong>${F.n(a.mtd)}</strong></td>
+      <td>${gb(a.yoy)}</td>
+      <td>${F.n(a.farmers)}</td>
+      <td style="color:var(--amber);font-weight:600">${F.f1(a.farmerLpd)}</td>
+      <td style="color:var(--amber)">${F.f3(a.fat)}</td>
+      <td>${a.dark > 0 
+        ? `<span class="b b-r">${a.dark}</span>` 
+        : '<span style="color:var(--muted-lt)">0</span>'}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="10" style="text-align:center;padding:28px;color:var(--muted)">No areas match filter</td></tr>';
+
+  document.getElementById('pagArea').innerHTML =
+    buildPagination(totalItems, 'area', 'renderAreaTab');
+}
 
 
 boot();

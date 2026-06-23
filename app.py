@@ -89,9 +89,9 @@ def  _build_cache():
             return
 
         yr_mth_hpc = (
-            "yr=(SELECT MAX(yr) FROM proc_monthly_hpc) AND "
-            "mth=(SELECT MAX(mth) FROM proc_monthly_hpc "
-            "WHERE yr=(SELECT MAX(yr) FROM proc_monthly_hpc))"
+            "mh.yr = (SELECT MAX(yr) FROM proc_monthly_hpc) AND "
+            "mh.mth = (SELECT MAX(mth) FROM proc_monthly_hpc "
+            "WHERE yr = (SELECT MAX(yr) FROM proc_monthly_hpc))"
         )
         yr_mth_fmr = ''  # unused — monthly_farmer removed from bootstrap
 
@@ -117,8 +117,9 @@ def  _build_cache():
                 GROUP BY hpc_plant_key
             )
             SELECT s.hpc_plant_key, s.hpc_name, s.plant_name, s.plant_code, s.region, s.zone,
-                   COALESCE(hc.hpr_name, s.hpr_name) AS hpr_name,
-                   COALESCE(hc.mobile_no, s.mobile_no) AS mobile_no,
+                    s.area,
+                    COALESCE(hc.hpr_name, s.hpr_name) AS hpr_name,
+                    COALESCE(hc.mobile_no, s.mobile_no) AS mobile_no,
                    ROUND(s.mtd,1)         AS mtd,
                    ROUND(s.lm,1)          AS lm,
                    ROUND(s.lmtd,1)        AS lmtd,
@@ -404,19 +405,23 @@ def  _build_cache():
 
         # ── filters (all values for CXO / admin) ──────────────────────────
         filters = {
-            "zones":   [r[0] for r in conn.execute(
-                f"SELECT DISTINCT zone FROM proc_period_snapshot "
-                f"WHERE snapshot_date='{snap_date}' AND zone IS NOT NULL ORDER BY zone"
-            ).fetchall()],
-            "regions": [r[0] for r in conn.execute(
-                f"SELECT DISTINCT region FROM proc_period_snapshot "
-                f"WHERE snapshot_date='{snap_date}' AND region IS NOT NULL ORDER BY region"
-            ).fetchall()],
-            "plants":  [{"code": r[0], "name": r[1]} for r in conn.execute(
-                f"SELECT DISTINCT plant_code, plant_name FROM proc_period_snapshot "
-                f"WHERE snapshot_date='{snap_date}' AND plant_code IS NOT NULL ORDER BY plant_name"
-            ).fetchall()],
-        }
+    "zones":   [r[0] for r in conn.execute(
+        f"SELECT DISTINCT zone FROM proc_period_snapshot "
+        f"WHERE snapshot_date='{snap_date}' AND zone IS NOT NULL ORDER BY zone"
+    ).fetchall()],
+    "regions": [r[0] for r in conn.execute(
+        f"SELECT DISTINCT region FROM proc_period_snapshot "
+        f"WHERE snapshot_date='{snap_date}' AND region IS NOT NULL ORDER BY region"
+    ).fetchall()],
+    "areas":   [r[0] for r in conn.execute(        # ← ADD THIS BLOCK
+        f"SELECT DISTINCT area FROM proc_period_snapshot "
+        f"WHERE snapshot_date='{snap_date}' AND area IS NOT NULL ORDER BY area"
+    ).fetchall()],
+    "plants":  [{"code": r[0], "name": r[1]} for r in conn.execute(
+        f"SELECT DISTINCT plant_code, plant_name FROM proc_period_snapshot "
+        f"WHERE snapshot_date='{snap_date}' AND plant_code IS NOT NULL ORDER BY plant_name"
+    ).fetchall()],
+}
 
         # ── insights ──────────────────────────────────────────────────────
         insights = []
@@ -527,6 +532,183 @@ def  _build_cache():
                 "action":   "Document best practices and replicate to lagging regions.",
                 "zone": r["zone"] or "", "region": r["region"] or "",
             })
+
+        # ── Farmer Productivity Insight ───────────────────────────────────────────────
+        # Finds regions where avg LPD per farmer dropped >15% vs last month
+        # Uses monthly_hpc which has lpd_per_farmer pre-computed
+        low_lpd_regions = conn.execute(f"""
+            WITH curr AS (
+                SELECT s.region, s.zone,
+                    SUM(mh.total_qty_ltr) AS curr_ltr,
+                    COUNT(DISTINCT mf.farmer_code) AS curr_farmers
+                FROM proc_monthly_hpc mh
+                JOIN proc_period_snapshot s ON mh.hpc_plant_key = s.hpc_plant_key
+                AND s.snapshot_date = '{snap_date}'
+                JOIN proc_monthly_farmer mf ON mf.hpc_plant_key = mh.hpc_plant_key
+                AND mf.yr = mh.yr AND mf.mth = mh.mth
+                AND mf.farmer_code_seq != '9999'
+                WHERE {yr_mth_hpc}
+                GROUP BY s.region, s.zone
+            ),
+            prev AS (
+                SELECT s.region,
+                    SUM(mh.total_qty_ltr) AS prev_ltr,
+                    COUNT(DISTINCT mf.farmer_code) AS prev_farmers
+                FROM proc_monthly_hpc mh
+                JOIN proc_period_snapshot s ON mh.hpc_plant_key = s.hpc_plant_key
+                AND s.snapshot_date = '{snap_date}'
+                JOIN proc_monthly_farmer mf ON mf.hpc_plant_key = mh.hpc_plant_key
+                AND mf.yr = mh.yr AND mf.mth = mh.mth
+                AND mf.farmer_code_seq != '9999'
+                WHERE mh.yr = (
+                    SELECT yr FROM proc_monthly_hpc 
+                    ORDER BY yr DESC, mth DESC LIMIT 1 OFFSET 1
+                ) AND mh.mth = (
+                    SELECT mth FROM proc_monthly_hpc 
+                    ORDER BY yr DESC, mth DESC LIMIT 1 OFFSET 1
+                )
+                GROUP BY s.region
+            )
+            SELECT c.region, c.zone,
+                ROUND(c.curr_ltr / NULLIF(c.curr_farmers, 0), 1) AS curr_lpd,
+                ROUND(p.prev_ltr / NULLIF(p.prev_farmers, 0), 1) AS prev_lpd,
+                ROUND(
+                    (c.curr_ltr/NULLIF(c.curr_farmers,0) - p.prev_ltr/NULLIF(p.prev_farmers,0))
+                    / NULLIF(p.prev_ltr/NULLIF(p.prev_farmers,0), 0) * 100
+                , 1) AS drop_pct
+            FROM curr c
+            JOIN prev p ON c.region = p.region
+            WHERE p.prev_ltr / NULLIF(p.prev_farmers, 0) > 0
+            AND (c.curr_ltr/NULLIF(c.curr_farmers,0)) < 
+                (p.prev_ltr/NULLIF(p.prev_farmers,0)) * 0.85
+            ORDER BY drop_pct LIMIT 3
+        """).fetchall()
+
+        for r in low_lpd_regions:
+            insights.append({
+                "priority": "warning", "category": "Farmer Productivity",
+                "title":    f"{r['region']}: Farmer yield dropped {abs(r['drop_pct'])}% vs last month",
+                "detail":   f"Avg LPD fell from {r['prev_lpd']} to {r['curr_lpd']} L/farmer/day.",
+                "action":   "Check if low-volume farmers increased or top farmers churned.",
+                "zone": r["zone"] or "", "region": r["region"] or "",
+            })
+
+
+        # ── Farmer Addition Insight ───────────────────────────────────────────────────
+        # Surfaces regions actively growing farmer base (positive signal)
+        # and regions with zero new acquisition (warning signal)
+        # Uses proc_hpc_farmer_health which has acquired/churned per HPC
+        if has_fh:
+            # Positive: regions adding meaningful farmer count
+            high_acq = conn.execute(f"""
+                SELECT s.region, s.zone,
+                    SUM(fh.acquired) AS acquired,
+                    SUM(fh.churned)  AS churned,
+                    SUM(fh.acquired) - SUM(fh.churned) AS net
+                FROM proc_hpc_farmer_health fh
+                JOIN proc_period_snapshot s ON fh.hpc_plant_key = s.hpc_plant_key
+                AND s.snapshot_date = '{snap_date}'
+                WHERE fh.snapshot_date = '{snap_date}'
+                GROUP BY s.region, s.zone
+                HAVING SUM(fh.acquired) > 20 
+                AND SUM(fh.acquired) > SUM(fh.churned) * 1.5
+                ORDER BY net DESC LIMIT 2
+            """).fetchall()
+
+            for r in high_acq:
+                insights.append({
+                    "priority": "positive", "category": "Farmer Addition",
+                    "title":    f"{r['region']}: Net +{r['net']} farmers added this month",
+                    "detail":   f"Acquired {r['acquired']}, lost {r['churned']}. Strong onboarding momentum.",
+                    "action":   "Document the acquisition playbook — replicate in lagging regions.",
+                    "zone": r["zone"] or "", "region": r["region"] or "",
+                })
+
+            # Warning: regions with very low or zero acquisition
+            zero_acq = conn.execute(f"""
+                SELECT s.region, s.zone,
+                    SUM(fh.acquired) AS acquired,
+                    SUM(fh.churned)  AS churned,
+                    SUM(fh.total_farmers) AS total
+                FROM proc_hpc_farmer_health fh
+                JOIN proc_period_snapshot s ON fh.hpc_plant_key = s.hpc_plant_key
+                AND s.snapshot_date = '{snap_date}'
+                WHERE fh.snapshot_date = '{snap_date}'
+                GROUP BY s.region, s.zone
+                HAVING SUM(fh.acquired) = 0 
+                AND SUM(fh.total_farmers) > 50
+                ORDER BY churned DESC LIMIT 3
+            """).fetchall()
+
+            for r in zero_acq:
+                insights.append({
+                    "priority": "warning", "category": "Farmer Addition",
+                    "title":    f"{r['region']}: Zero new farmers acquired this month",
+                    "detail":   f"Base of {r['total']} farmers, {r['churned']} lost, none added.",
+                    "action":   "Activate field officer new-farmer drives. Check competitor rates.",
+                    "zone": r["zone"] or "", "region": r["region"] or "",
+                })
+
+        # ── Farmer Attrition Insight ──────────────────────────────────────────────────
+        # Only fires for HPCs where has_mtd_data=1 to avoid false alarms
+        # from 15-day cycle regions that haven't uploaded yet
+        if has_fh:
+            high_attrition = conn.execute(f"""
+                SELECT s.region, s.zone,
+                    ROUND(
+                        SUM(fh.churned) * 100.0 / 
+                        NULLIF(SUM(fh.churned + fh.total_farmers - fh.acquired), 0)
+                    , 1) AS attrition_pct,
+                    SUM(fh.churned) AS total_churned,
+                    SUM(fh.total_farmers) AS total_farmers,
+                    COUNT(DISTINCT fh.hpc_plant_key) AS hpc_count
+                FROM proc_hpc_farmer_health fh
+                JOIN proc_period_snapshot s ON fh.hpc_plant_key = s.hpc_plant_key
+                AND s.snapshot_date = '{snap_date}'
+                WHERE fh.snapshot_date = '{snap_date}'
+                AND s.has_mtd_data = 1          -- guard against 15-day cycle false alarms
+                GROUP BY s.region, s.zone
+                HAVING attrition_pct > 12
+                AND SUM(fh.total_farmers) > 30
+                ORDER BY attrition_pct DESC LIMIT 3
+            """).fetchall()
+
+            for r in high_attrition:
+                insights.append({
+                    "priority": "critical" if r['attrition_pct'] > 20 else "warning",
+                    "category": "Farmer Attrition",
+                    "title":    f"{r['region']}: {r['attrition_pct']}% farmer attrition this month",
+                    "detail":   f"{r['total_churned']} farmers lost across {r['hpc_count']} centers "
+                                f"(base: {r['total_farmers']}).",
+                    "action":   "Immediate rate review. Check payment delays and competitor activity.",
+                    "zone": r["zone"] or "", "region": r["region"] or "",
+                })
+
+            # Deteriorating segment: centers that moved from Stable → Churning
+            # Proxy: Churning segment HPCs with attrition > 20% this cycle
+            churning_hpcs = conn.execute(f"""
+                SELECT s.region, s.zone,
+                    COUNT(*) AS churning_count,
+                    SUM(fh.churned) AS total_lost
+                FROM proc_hpc_farmer_health fh
+                JOIN proc_period_snapshot s ON fh.hpc_plant_key = s.hpc_plant_key
+                AND s.snapshot_date = '{snap_date}'
+                WHERE fh.snapshot_date = '{snap_date}'
+                AND fh.segment = 'Churning'
+                AND s.has_mtd_data = 1
+                GROUP BY s.region, s.zone
+                HAVING churning_count >= 3
+                ORDER BY churning_count DESC LIMIT 3
+            """).fetchall()
+
+            for r in churning_hpcs:
+                insights.append({
+                    "priority": "warning", "category": "Farmer Attrition",
+                    "title":    f"{r['region']}: {r['churning_count']} centers in Churning segment",
+                    "detail":   f"Combined {r['total_lost']} farmers lost. These centers need retention support.",
+                    "action":   "Field visits to Churning centers. Farmer satisfaction check.",
+                    "zone": r["zone"] or "", "region": r["region"] or "",
+                })
 
         
 
@@ -730,21 +912,23 @@ def analytics_required(f):
 def get_data_scope(user):
     role = user["role"]
     if role in ("admin", "cxo"):
-        return {"zone": "", "region": "", "plant_code": ""}
+        return {"zone": "", "region": "", "plant_code": "", "area": ""}
     if role == "zh":
-        return {"zone": user["scope_zone"], "region": "", "plant_code": ""}
+        return {"zone": user["scope_zone"], "region": "", "plant_code": "", "area": ""}
     if role == "rh":
-        return {"zone": user["scope_zone"], "region": user["scope_region"], "plant_code": ""}
+        return {"zone": user["scope_zone"], "region": user["scope_region"], 
+                "plant_code": "", "area": ""}
     if role == "plant":
-        return {"zone": user["scope_zone"], "region": user["scope_region"], "plant_code": str(user["scope_plant"])}
-    return {"zone": "", "region": "", "plant_code": ""}
+        return {"zone": user["scope_zone"], "region": user["scope_region"], 
+                "plant_code": str(user["scope_plant"]), "area": ""}
+    return {"zone": "", "region": "", "plant_code": "", "area": ""}
 
 
 def gf():
     user  = current_user()
     scope = get_data_scope(user)
     f     = dict(scope)
-    for key in ("zone", "region", "plant_code"):
+    for key in ("zone", "region", "plant_code", "area"):   # ← ADD "area"
         if not f[key]:
             val = request.args.get(key, "")
             if val:
@@ -763,23 +947,21 @@ def build_where(f, table_alias="", extra=None):
 
 
 def _filter_by_scope(arr, scope, skip_plant=False):
-    """Filter a list of dicts using zone/region/plant_code scope."""
     zone   = scope.get("zone", "")
     region = scope.get("region", "")
     plant  = scope.get("plant_code", "")
-    if not zone and not region and not plant:
+    area   = scope.get("area", "")          # ← ADD THIS
+    if not zone and not region and not plant and not area:
         return arr
     out = []
     for item in arr:
         if zone   and item.get("zone",   "") != zone:   continue
         if region and item.get("region", "") != region: continue
+        if area   and item.get("area",   "") != area:   continue   # ← ADD THIS
         if not skip_plant and plant:
-            # Primary: match plant_code column if present
             item_plant = str(item.get("plant_code") or "")
             if item_plant and item_plant != str(plant):
                 continue
-            # Fallback: match via hpc_plant_key prefix (handles farmer_rfm
-            # rows where plant_code column may be null)
             elif not item_plant:
                 hpk = str(item.get("hpc_plant_key") or "")
                 if hpk and not (hpk.startswith(str(plant)+"-") or
@@ -788,7 +970,6 @@ def _filter_by_scope(arr, scope, skip_plant=False):
                     continue
         out.append(item)
     return out
-
 
 def _recompute_snapshot(hpcs, mhpc, base_snap):
     """
@@ -855,13 +1036,15 @@ def _recompute_snapshot(hpcs, mhpc, base_snap):
 def _build_scoped_filters(hpcs):
     zones   = sorted({h["zone"]   for h in hpcs if h.get("zone")})
     regions = sorted({h["region"] for h in hpcs if h.get("region")})
+    areas   = sorted({h["area"]   for h in hpcs if h.get("area")})   # ← ADD THIS
     seen, plants = set(), []
     for h in hpcs:
         pc = str(h.get("plant_code", ""))
         if pc and pc not in seen:
             seen.add(pc)
             plants.append({"code": pc, "name": h.get("plant_name", pc)})
-    return {"zones": zones, "regions": regions, "plants": plants}
+    return {"zones": zones, "regions": regions, 
+            "plants": plants, "areas": areas}    # ← ADD areas
 
 # ── AUTH ROUTES ───────────────────────────────────────────────────────────────
 
